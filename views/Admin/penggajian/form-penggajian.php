@@ -221,8 +221,8 @@
                             <?php
                             if ($_SESSION['status'] == 'sukses') {
                             ?>
-                    <div class="alert alert-warning" role="alert" id="alert-success">
-                        <span id="message-succes"></span>
+                    <div class="alert alert-success" role="alert" id="alert-success">
+                        <span id="message-success"></span>
                     </div>
                 <?php
                             } elseif ($_SESSION['status'] == "gagal") {

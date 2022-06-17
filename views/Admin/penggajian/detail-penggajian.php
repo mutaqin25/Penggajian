@@ -221,8 +221,8 @@
                             <?php
                             if ($_SESSION['status'] == 'sukses') {
                             ?>
-                    <div class="alert alert-warning" role="alert" id="alert-success">
-                        <span id="message-succes"></span>
+                    <div class="alert alert-success" role="alert" id="alert-success">
+                        <span id="message-success"></span>
                     </div>
                 <?php
                             } elseif ($_SESSION['status'] == "gagal") {
@@ -384,6 +384,7 @@
                                         <td>Rp. <?php echo $d['uang_tidak_masuk'] ?></td>
 
 
+
                                     </tr>
                                 <?php
                                 }
@@ -453,7 +454,7 @@
                                     <th>Uang Potongan</th>
                                     <th>PPH</th>
                                     <th>Gaji Bersih</th>
-
+                                    <th>Ket</th>
                                 </tr>
                             </thead>
                             <tfoot>
@@ -466,6 +467,7 @@
                                     <th>Uang Potongan</th>
                                     <th>PPH</th>
                                     <th>Gaji Bersih</th>
+                                    <th>Ket</th>
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -485,7 +487,10 @@
                                         <td>Rp. <?php echo $d['uang_potongan'] ?></td>
                                         <td>Rp. <?php echo $d['pph21'] ?></td>
                                         <td>Rp. <?php echo $d['gaji_bersih'] ?></td>
+                                        <td>
+                                            <a class="btn btn-danger" href="../../../actions/delete-gaji.php?id=<?php echo $d['id_gaji']; ?>" data-toggle="tooltip" title="Delete" role="button"><i class="fa-solid fa-trash-can"></i></a>
 
+                                        </td>
 
                                     </tr>
                                 <?php

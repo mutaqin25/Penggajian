@@ -192,8 +192,12 @@ $html = '<!DOCTYPE html>
             <td colspan="2" >: ' . $result_karyawan["nama"] . '</td>
         </tr>
         <tr>
-            <td style="width:200px ">Jabatan</td>
-            <td colspan="2">: ' . $result_karyawan["jabatan"] . '</td>
+            <td style="width:200px ">Jabatan
+                <br> .
+            </td>
+            <td colspan="2">: ' . $result_karyawan["jabatan"] . '
+                <br >.
+            </td>
             <td style="width: 20px"></td>
             <td style="width:200px " align="center">Owner
                 <hr>
