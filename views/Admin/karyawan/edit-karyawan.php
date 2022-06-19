@@ -225,6 +225,7 @@
                             <?php
                             $id = $_GET['id'];
                             $data = mysqli_query($conn, "select * from karyawan where nik='$id'");
+
                             while ($d = mysqli_fetch_array($data)) {
                             ?>
                                 <form action="../../../actions/update-karyawan.php" method="POST" enctype="multipart/form-data">
@@ -353,6 +354,98 @@
                                             <label for="" class="col-sm-2 col-form-label">Gaji</label>
                                             <div class="col-sm-5">
                                                 <input type="text" name="gaji" value="<?php echo $d['gaji'] ?>" required class="form-control" placeholder="Gaji">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="" class="col-sm-2 col-form-label pt-0">BPJS</label>
+                                            <div class="col-sm-10">
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" name="ket_bpjs" id="yesCheck" onclick="javascript:yesnoCheck();" value="Memiliki" <?php if ($d['bpjs'] != 'Tidak Memiliki' && $d['bpjs'] != '') echo 'checked' ?>>
+                                                    <label class="form-check-label" for="gridRadios1">
+                                                        Memiliki
+                                                    </label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" onclick="javascript:yesnoCheck();" name="ket_bpjs" id="noCheck" value="Tidak Memiliki" <?php if ($d['bpjs'] == 'Tidak Memiliki' || $d['bpjs'] == '') echo 'checked' ?>>
+                                                    <label class="form-check-label" for="gridRadios1">
+                                                        Tidak Memiliki
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php $check = explode(",", $d['bpjs']);
+                                        if ($d['bpjs'] != 'Tidak Memiliki' && $d['bpjs'] != '') {
+                                        ?>
+                                            <div class="form-group row">
+                                                <label for="" class="col-sm-2 col-form-label pt-0"></label>
+                                                <div class="col-sm-10" id="ifYes">
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="checkbox" value="Jaminan Kecelakaan Kerja" <?php echo in_array('Jaminan Kecelakaan Kerja', $check) ? ' checked' : ''; ?> name="bpjs[]" id="flexCheckDefault">
+                                                        <label class="form-check-label" for="flexCheckDefault">
+                                                            Jaminan Kecelakaan Kerja
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="checkbox" value="Jaminan Kematian" <?php echo in_array('Jaminan Kematian', $check) ? ' checked' : ''; ?> name="bpjs[]" id="flexCheckChecked">
+                                                        <label class="form-check-label" for="flexCheckChecked">
+                                                            Jaminan Kematian
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="checkbox" value="Jaminan Hari Tua" <?php echo in_array('Jaminan Hari Tua', $check) ? ' checked' : ''; ?> name="bpjs[]" id="flexCheckChecked">
+                                                        <label class="form-check-label" for="flexCheckChecked">
+                                                            Jaminan Hari Tua
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="checkbox" value="Jaminan Pensiun" <?php echo in_array('Jaminan Pensiun', $check) ? ' checked' : ''; ?> name="bpjs[]" id="flexCheckChecked">
+                                                        <label class="form-check-label" for="flexCheckChecked">
+                                                            Jaminan Pensiun
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="checkbox" value="Jaminan Kesehatan" <?php echo in_array('Jaminan Kesehatan', $check) ? ' checked' : ''; ?> name="bpjs[]" id="flexCheckChecked">
+                                                        <label class="form-check-label" for="flexCheckChecked">
+                                                            Jaminan Kesehatan
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        <?php } ?>
+                                        <div class="form-group row">
+                                            <label for="" class="col-sm-2 col-form-label pt-0"></label>
+                                            <div class="col-sm-10" id="ifYes" style="display:none ;">
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" value="Jaminan Kecelakaan Kerja" <?php echo in_array('Jaminan Kecelakaan Kerja', $check) ? ' checked' : ''; ?> name="bpjs[]" id="flexCheckDefault">
+                                                    <label class="form-check-label" for="flexCheckDefault">
+                                                        Jaminan Kecelakaan Kerja
+                                                    </label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" value="Jaminan Kematian" <?php echo in_array('Jaminan Kematian', $check) ? ' checked' : ''; ?> name="bpjs[]" id="flexCheckChecked">
+                                                    <label class="form-check-label" for="flexCheckChecked">
+                                                        Jaminan Kematian
+                                                    </label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" value="Jaminan Hari Tua" <?php echo in_array('Jaminan Hari Tua', $check) ? ' checked' : ''; ?> name="bpjs[]" id="flexCheckChecked">
+                                                    <label class="form-check-label" for="flexCheckChecked">
+                                                        Jaminan Hari Tua
+                                                    </label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" value="Jaminan Pensiun" <?php echo in_array('Jaminan Pensiun', $check) ? ' checked' : ''; ?> name="bpjs[]" id="flexCheckChecked">
+                                                    <label class="form-check-label" for="flexCheckChecked">
+                                                        Jaminan Pensiun
+                                                    </label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" value="Jaminan Kesehatan" <?php echo in_array('Jaminan Kesehatan', $check) ? ' checked' : ''; ?> name="bpjs[]" id="flexCheckChecked">
+                                                    <label class="form-check-label" for="flexCheckChecked">
+                                                        Jaminan Kesehatan
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -533,6 +626,12 @@
         $(function() {
             $('[data-toggle="tooltip"]').tooltip()
         })
+
+        function yesnoCheck() {
+            if (document.getElementById('yesCheck').checked) {
+                document.getElementById('ifYes').style.display = 'block';
+            } else document.getElementById('ifYes').style.display = 'none';
+        }
     </script>
 
     <!-- alert fade Out-->

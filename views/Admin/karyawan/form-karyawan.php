@@ -262,6 +262,7 @@
                                     <th>Jabatan</th>
                                     <th>Shift</th>
                                     <th>Gaji</th>
+                                    <th>BPJS</th>
                                     <th>Tanggal Masuk</th>
                                     <th>Pendidikan</th>
                                     <!-- <th>Foto</th>
@@ -283,6 +284,7 @@
                                     <th>Jabatan</th>
                                     <th>Shift</th>
                                     <th>Gaji</th>
+                                    <th>BPJS</th>
                                     <th>Tanggal Masuk</th>
                                     <th>Pendidikan</th>
                                     <!-- <th>Foto</th>
@@ -309,6 +311,7 @@
                                         <td><?php echo $d['jabatan'] ?></td>
                                         <td><?php echo $d['shift'] ?></td>
                                         <td>Rp.<?php echo $d['gaji'] ?></td>
+                                        <td><?php echo $d['bpjs'] ?></td>
                                         <td><?php echo $d['tgl_masuk'] ?></td>
                                         <td><?php echo $d['pendidikan'] ?></td>
 

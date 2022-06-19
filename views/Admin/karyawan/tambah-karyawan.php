@@ -323,6 +323,58 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
+                                        <label for="" class="col-sm-2 col-form-label pt-0">BPJS</label>
+                                        <div class="col-sm-10">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="ket_bpjs" id="yesCheck" onclick="javascript:yesnoCheck();" value="Memiliki">
+                                                <label class="form-check-label" for="gridRadios1">
+                                                    Memiliki
+                                                </label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" onclick="javascript:yesnoCheck();" name="ket_bpjs" id="noCheck" value="Tidak Memiliki" checked>
+                                                <label class="form-check-label" for="gridRadios1">
+                                                    Tidak Memiliki
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="" class="col-sm-2 col-form-label pt-0"></label>
+                                        <div class="col-sm-10" id="ifYes" style="display:none ;">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" value="Jaminan Kecelakaan Kerja" name="bpjs[]" id="flexCheckDefault">
+                                                <label class="form-check-label" for="flexCheckDefault">
+                                                    Jaminan Kecelakaan Kerja
+                                                </label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" value="Jaminan Kematian" name="bpjs[]" id="flexCheckChecked">
+                                                <label class="form-check-label" for="flexCheckChecked">
+                                                    Jaminan Kematian
+                                                </label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" value="Jaminan Hari Tua" name="bpjs[]" id="flexCheckChecked">
+                                                <label class="form-check-label" for="flexCheckChecked">
+                                                    Jaminan Hari Tua
+                                                </label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" value="Jaminan Pensiun" name="bpjs[]" id="flexCheckChecked">
+                                                <label class="form-check-label" for="flexCheckChecked">
+                                                    Jaminan Pensiun
+                                                </label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" value="Jaminan Kesehatan" name="bpjs[]" id="flexCheckChecked">
+                                                <label class="form-check-label" for="flexCheckChecked">
+                                                    Jaminan Kesehatan
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
                                         <label for="" class="col-sm-2 col-form-label">Tanggal Masuk</label>
                                         <div class="col-sm-5">
                                             <input type="date" name="tgl_masuk" required class="form-control" placeholder="Tanggal Masuk">
@@ -480,8 +532,16 @@
     <script>
         $(function() {
             $('[data-toggle="tooltip"]').tooltip()
-        })
+        });
+
+        function yesnoCheck() {
+            if (document.getElementById('yesCheck').checked) {
+                document.getElementById('ifYes').style.display = 'block';
+            } else document.getElementById('ifYes').style.display = 'none';
+        }
     </script>
+
+
 
     <!-- alert fade Out-->
     <?php
