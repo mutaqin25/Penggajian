@@ -20,6 +20,14 @@ if (isset($_POST['simpan'])) {
     $pendidikan = $_POST['pendidikan'];
     $foto_lama = $_POST['foto_lama'];
     $qrcode_lama = $_POST['qrcode_lama'];
+    $ket_bpjs = $_POST['ket_bpjs'];
+
+    if ($ket_bpjs == 'Memiliki') {
+        $bpjs = $_POST['bpjs'];
+        $nama_bpjs = implode(",", $_POST['bpjs']);
+    } else {
+        $nama_bpjs = 'Tidak Memiliki';
+    }
 
 
     // upload Foto
@@ -41,7 +49,7 @@ if (isset($_POST['simpan'])) {
     }
 
     if (!in_array($ext, $ekstensi)) {
-        mysqli_query($conn, "UPDATE karyawan SET nik='$nik', nama='$nama', jenis_kelamin='$jenis_kelamin', tgl_lahir='$tgl_lahir', alamat='$alamat', status='$status', agama='$agama', no_hp='$no_hp', jabatan='$jabatan', shift='$shift', gaji='$gaji', tgl_masuk='$tgl_masuk', pendidikan='$pendidikan', qrcode='$fileQRcode' WHERE nik='$id' ");
+        mysqli_query($conn, "UPDATE karyawan SET nik='$nik', nama='$nama', jenis_kelamin='$jenis_kelamin', tgl_lahir='$tgl_lahir', alamat='$alamat', status='$status', agama='$agama', no_hp='$no_hp', jabatan='$jabatan', shift='$shift', gaji='$gaji', bpjs='$nama_bpjs', tgl_masuk='$tgl_masuk', pendidikan='$pendidikan', qrcode='$fileQRcode' WHERE nik='$id' ");
 
         if ($qrcode_lama != $fileQRcode) {
             unlink('../assets/images/QRCode/' . $qrcode_lama);
@@ -55,7 +63,7 @@ if (isset($_POST['simpan'])) {
             $xx = $rand . '_' . $fileFoto;
             move_uploaded_file($_FILES['foto']['tmp_name'], '../assets/images/profil/' . $rand . '_' . $fileFoto);
 
-            mysqli_query($conn, "UPDATE karyawan SET nik='$nik', nama='$nama', jenis_kelamin='$jenis_kelamin', tgl_lahir='$tgl_lahir', alamat='$alamat', status='$status', agama='$agama', no_hp='$no_hp', jabatan='$jabatan', shift='$shift', gaji='$gaji', tgl_masuk='$tgl_masuk', pendidikan='$pendidikan', foto='$xx', qrcode='$fileQRcode' WHERE nik='$id' ");
+            mysqli_query($conn, "UPDATE karyawan SET nik='$nik', nama='$nama', jenis_kelamin='$jenis_kelamin', tgl_lahir='$tgl_lahir', alamat='$alamat', status='$status', agama='$agama', no_hp='$no_hp', jabatan='$jabatan', shift='$shift', gaji='$gaji', bpjs='$nama_bpjs', tgl_masuk='$tgl_masuk', pendidikan='$pendidikan', foto='$xx', qrcode='$fileQRcode' WHERE nik='$id' ");
 
             unlink('../assets/images/QRCode/' . $qrcode_lama);
             unlink('../assets/images/profil/' . $foto_lama);

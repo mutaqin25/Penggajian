@@ -17,6 +17,15 @@ if (isset($_POST['simpan'])) {
     $gaji = $_POST['gaji'];
     $tgl_masuk = $_POST['tgl_masuk'];
     $pendidikan = $_POST['pendidikan'];
+    $ket_bpjs = $_POST['ket_bpjs'];
+
+    if ($ket_bpjs == 'Memiliki') {
+        $bpjs = $_POST['bpjs'];
+        $nama_bpjs = implode(",", $_POST['bpjs']);
+    } else {
+        $nama_bpjs = 'Tidak Memiliki';
+    }
+
 
 
     // membuat QRCode 
@@ -40,13 +49,6 @@ if (isset($_POST['simpan'])) {
     $ext = pathinfo($fileFoto, PATHINFO_EXTENSION);
 
 
-    // membuat id
-    // $cek_id = mysqli_query($conn, "select max(id_user) as kode from user");
-    // $jumlah = mysqli_fetch_array($cek_id);
-    // $no = $jumlah['kode'];
-    // $id = $no + 1;
-
-
     // menginput data ke database
 
 
@@ -57,7 +59,7 @@ if (isset($_POST['simpan'])) {
             $xx = $rand . '_' . $fileFoto;
             move_uploaded_file($_FILES['foto']['tmp_name'], '../assets/images/profil/' . $rand . '_' . $fileFoto);
 
-            mysqli_query($conn, "INSERT INTO karyawan (nik, nama, jenis_kelamin, tgl_lahir, alamat, status, agama, no_hp, jabatan, shift, gaji, tgl_masuk, pendidikan, foto, qrcode) VALUE ('$nik', '$nama', '$jenis_kelamin', '$tgl_lahir', '$alamat', '$status', '$agama', '$no_hp', '$jabatan',  '$shift', '$gaji', '$tgl_masuk', '$pendidikan', '$xx', '$fileQRcode')");
+            mysqli_query($conn, "INSERT INTO karyawan (nik, nama, jenis_kelamin, tgl_lahir, alamat, status, agama, no_hp, jabatan, shift, gaji, bpjs, tgl_masuk, pendidikan, foto, qrcode) VALUE ('$nik', '$nama', '$jenis_kelamin', '$tgl_lahir', '$alamat', '$status', '$agama', '$no_hp', '$jabatan',  '$shift', '$gaji', '$nama_bpjs', '$tgl_masuk', '$pendidikan', '$xx', '$fileQRcode')");
 
             $_SESSION['status'] = "sukses";
             $_SESSION['message'] = "<strong>Sukses!</strong> Data Berhasil Disimpan!";
