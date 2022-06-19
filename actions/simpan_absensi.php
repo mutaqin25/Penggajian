@@ -72,26 +72,25 @@ $id_p = $data_id_p['id'];
 
 if ($shift == 'Shift 1') {
     if ($tanggal != $tgl_now) {
-        if ($jam <= '08:00:00') {
+        if ($jam <= '09:00:00') {
             $jam_masuk = $jam;
             $ket_masuk = "Tepat Waktu";
-        } else if ($jam >= '08:00:00') {
+        } else if ($jam >= '09:00:00') {
             $jam_masuk = $jam;
             $ket_masuk = "Terlambat";
         }
 
-        if ($jam <= '08:00:00') {
+        if ($jam <= '09:00:00') {
 
             $jam_terlambat = 0;
             $uang_terlambat = $jam_terlambat * 10000;
             $uang_neto = $gaji - $uang_terlambat;
             $sql_penghasilan = "INSERT INTO penghasilan (id_penghasilan, nik, id_absen, tanggal,  hadir, tidak_masuk, sakit, terlambat, lembur, gaji_pokok, uang_makan, uang_transport, uang_sakit, uang_tidak_masuk, uang_lembur, uang_terlambat, gaji_neto) VALUE ('$id2', '$nik', '$id', '$tanggal', '', '', '','$jam_terlambat','','$gaji','','','', '','', '$uang_terlambat','$gaji_neto')";
             $query_penghasilan = mysqli_query($conn, $sql_penghasilan);
-        } else if ($jam > '08:00:00') {
-            echo 'saaaaa';
+        } else if ($jam > '09:00:00') {
             date_default_timezone_set('Asia/Jakarta');
 
-            $date1 = date_create("08:00:00");
+            $date1 = date_create("09:00:00");
             $date2 = date_create();
             $diff = date_diff($date1, $date2);
 
@@ -120,22 +119,22 @@ if ($shift == 'Shift 1') {
             echo mysqli_error($conn);
         }
     } else if ($tanggal == $tgl_now) {
-        if ($jam < '15:00:00') {
+        if ($jam < '17:00:00') {
             $jam_keluar = $jam;
             $ket_keluar = "Pulang Lebih Awal";
             $keterangan = 'Hadir';
-        } else if ($jam == '15:00:00') {
+        } else if ($jam == '17:00:00') {
             $jam_keluar = $jam;
             $ket_keluar = "Pulang";
             $keterangan = 'Hadir';
-        } else if ($jam > '15:00:00') {
+        } else if ($jam > '17:00:00') {
             $jam_keluar = $jam;
             $ket_keluar = "Lembur";
             $keterangan = 'Hadir';
         }
 
 
-        if ($jam <= '15:00:00') {
+        if ($jam <= '17:00:00') {
             // cek jumlah Kehadiran
             $cek_hadir = mysqli_query($conn, "select hadir as hadir from penghasilan where id_penghasilan = $id_p ");
             $data_hadir = mysqli_fetch_array($cek_hadir);
@@ -171,9 +170,9 @@ if ($shift == 'Shift 1') {
 
             $sql_penghasilan = "Update penghasilan SET  hadir ='$jml_hadir', uang_makan='$uang_makan', uang_transport='$uang_transport', gaji_neto='$gaji_neto' WHERE id_penghasilan = '$id_p' ";
             $query_penghasilan = mysqli_query($conn, $sql_penghasilan);
-        } else if ($jam > '15:00:00') {
+        } else if ($jam > '17:00:00') {
             // cek berapa jam lembur
-            $date1 = date_create("15:00:00");
+            $date1 = date_create("17:00:00");
             $date2 = date_create();
             $diff = date_diff($date1, $date2);
             $jam_lembur = $diff->h;
@@ -232,15 +231,15 @@ if ($shift == 'Shift 1') {
     }
 } else if ($shift == 'Shift 2') {
     if ($tanggal != $tgl_now) {
-        if ($jam <= '15:00:00') {
+        if ($jam <= '14:00:00') {
             $jam_masuk = $jam;
             $ket_masuk = "Tepat Waktu";
-        } else if ($jam >= '15:00:00') {
+        } else if ($jam >= '14:00:00') {
             $jam_masuk = $jam;
             $ket_masuk = "Terlambat";
         }
 
-        if ($jam <= '15:00:00') {
+        if ($jam <= '14:00:00') {
             echo 'adadas';
             $jam_terlambat = 0;
             $uang_terlambat = $jam_terlambat * 10000;
@@ -249,11 +248,11 @@ if ($shift == 'Shift 1') {
             $sql_penghasilan = "INSERT INTO penghasilan (id_penghasilan, nik, id_absen, tanggal, hadir, tidak_masuk, sakit, terlambat, lembur, gaji_pokok, uang_makan, uang_transport, uang_sakit, uang_tidak_masuk, uang_lembur, uang_terlambat, gaji_neto) VALUE ('$id2', '$nik', '$id','$tanggal', '', '', '','$jam_terlambat','','$gaji','','','','','', '$uang_terlambat','$gaji_neto')";
             $query_penghasilan = mysqli_query($conn, $sql_penghasilan);
             echo mysqli_error($conn);
-        } else if ($jam > '15:00:00') {
+        } else if ($jam > '14:00:00') {
 
             date_default_timezone_set('Asia/Jakarta');
 
-            $date1 = date_create("15:00:00");
+            $date1 = date_create("14:00:00");
             $date2 = date_create();
             $diff = date_diff($date1, $date2);
 
@@ -282,22 +281,22 @@ if ($shift == 'Shift 1') {
             // header('Location: ../views/Admin/absensi/form-absensi.php');
         }
     } else if ($tanggal == $tgl_now) {
-        if ($jam < '21:0:0') {
+        if ($jam < '22:00:00') {
             $jam_keluar = $jam;
             $ket_keluar = "Pulang Lebih Awal";
             $keterangan = 'Hadir';
-        } else if ($jam == '21:00:00') {
+        } else if ($jam == '22:00:00') {
             $jam_keluar = $jam;
             $ket_keluar = "Tepat Waktu";
             $keterangan = 'Hadir';
-        } else if ($jam > '21:0:0') {
+        } else if ($jam > '22:00:00') {
             $jam_keluar = $jam;
             $ket_keluar = "Lembur";
             $keterangan = 'Hadir';
         }
         // echo 'adadad';
 
-        if ($jam <= '21:00:00') {
+        if ($jam <= '22:00:00') {
             // cek jumlah Kehadiran
             $cek_hadir = mysqli_query($conn, "select hadir as hadir from penghasilan where id_penghasilan = $id_p ");
             $data_hadir = mysqli_fetch_array($cek_hadir);
@@ -332,9 +331,9 @@ if ($shift == 'Shift 1') {
             $sql_penghasilan = "Update penghasilan SET  hadir ='$jml_hadir', uang_makan='$uang_makan', uang_transport='$uang_transport', gaji_neto='$gaji_neto' WHERE id_penghasilan = '$id_p' ";
             $query_penghasilan = mysqli_query($conn, $sql_penghasilan);
             echo mysqli_error($conn);
-        } else if ($jam > '21:00:00') {
+        } else if ($jam > '22:00:00') {
             // cek berapa jam lembur
-            $date1 = date_create("15:00:00");
+            $date1 = date_create("22:00:00");
             $date2 = date_create();
             $diff = date_diff($date1, $date2);
             $jam_lembur = $diff->h;

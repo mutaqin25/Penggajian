@@ -103,25 +103,25 @@ if (isset($_POST['simpan'])) {
         if ($keterangan == 'Hadir') {
 
             if ($shift == 'Shift 1') {
-                if ($jam_masuk <= '08:00:00') {
+                if ($jam_masuk <= '09:00:00') {
                     $jam_terlambat = 0;
                     $total_terlambat = $jam_terlambat;
-                } else if ($jam_masuk > '08:00:00') {
+                } else if ($jam_masuk > '09:00:00') {
                     date_default_timezone_set('Asia/Jakarta');
 
-                    $date1 = date_create("08:00:00");
+                    $date1 = date_create("09:00:00");
                     $date2 = date_create($_POST['jam_masuk']);
                     $diff = date_diff($date1, $date2);
                     $jam_terlambat = $diff->h;
                     $total_terlambat = $jam_terlambat;
                 }
 
-                if ($jam_keluar < '15:00:00') {
+                if ($jam_keluar < '17:00:00') {
                     $jam_lembur = 0;
                     $total_lembur = $jam_lembur;
-                } else if ($jam_keluar > '15:00:00') {
+                } else if ($jam_keluar > '17:00:00') {
                     // cek berapa jam lembur
-                    $date1 = date_create("15:00:00");
+                    $date1 = date_create("17:00:00");
                     $date2 = date_create($_POST['jam_keluar']);;
                     $diff = date_diff($date1, $date2);
                     $jam_lembur = $diff->h;
@@ -143,23 +143,23 @@ if (isset($_POST['simpan'])) {
                 $query_penghasilan = mysqli_query($conn, $sql_penghasilan);
             } else if ($shift == 'Shift 2') {
                 // cek jam Masuk
-                if ($jam_masuk <= '15:00:00') {
+                if ($jam_masuk <= '14:00:00') {
                     $jam_terlambat = 0;
-                } else if ($jam_masuk > '15:00:00') {
+                } else if ($jam_masuk > '14:00:00') {
                     date_default_timezone_set('Asia/Jakarta');
 
-                    $date1 = date_create("15:00:00");
+                    $date1 = date_create("14:00:00");
                     $date2 = date_create($_POST['jam_masuk']);
                     $diff = date_diff($date1, $date2);
                     $jam_terlambat = $diff->h;
                 }
 
                 // cek Jam Keluar
-                if ($jam_keluar < '21:00:00') {
+                if ($jam_keluar < '22:00:00') {
                     $jam_terlambat = 0;
-                } else if ($jam_keluar > '21:00:00') {
+                } else if ($jam_keluar > '22:00:00') {
                     // cek berapa jam lembur
-                    $date1 = date_create("21:00:00");
+                    $date1 = date_create("22:00:00");
                     $date2 = date_create($_POST['jam_keluar']);
                     $diff = date_diff($date1, $date2);
                     $jam_lembur = $diff->h;
