@@ -16,7 +16,7 @@ $result_gaji = mysqli_fetch_array($data_gaji);
 
 
 $mpdf = new \Mpdf\Mpdf();
-$mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-L']);
+$mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-P']);
 
 // ---------------------------- pendapatan ---------------------------- //
 $cek_makan = mysqli_query($conn, "select sum(uang_makan) as uang_makan from penghasilan where nik = $nik and tanggal like '%$tanggal%'");
@@ -53,11 +53,55 @@ $uang_pph = $result_pph['pph21'];
 
 $cek_gaji_bersih = mysqli_query($conn, "select gaji_bersih from gaji_bulanan where nik = $nik and periode like '%$tanggal%'");
 $result_gaji_bersih = mysqli_fetch_array($cek_gaji_bersih);
-$gaji_bersih = $result_gaji_bersih['pph21'];
+$gaji_bersih = $result_gaji_bersih['gaji_bersih'];
 
+$cek_bpjs = mysqli_query($conn, "select bpjs as bpjs from karyawan where nik = $nik");
+$data_bpjs = mysqli_fetch_array($cek_bpjs);
+
+$exp_bpjs = explode(",", $data_bpjs['bpjs']);
+if (in_array(
+    "Jaminan Kesehatan",
+    $exp_bpjs
+)) {
+    $jk = 0.04; //penerimaan
+} else {
+    $jk = 0;
+}
+if (in_array("Jaminan Kecelakaan Kerja", $exp_bpjs)) {
+    $jkk = 0.0024; //penerimaan
+} else {
+    $jkk = 0;
+}
+if (in_array("Jaminan Hari Tua", $exp_bpjs)) {
+    $jht = 0.02; //pengurangan
+} else {
+    $jht = 0;
+}
+if (in_array("Jaminan Pensiun", $exp_bpjs)) {
+    $jp = 0.01; //pengrangan
+} else {
+    $jp = 0;
+}
+if (in_array("Jaminan Kematian", $exp_bpjs)) {
+    $jkm = 0.003; // penambahan
+} else {
+    $jkm = 0;
+}
+// tunjangan
+$bpjs_jk = $jk * $result_karyawan['gaji'];
+$bpjs_jkm = $jkm * $result_karyawan['gaji'];
+$bpjs_jkk = $jkk * $result_karyawan['gaji'];
+
+// potongan
+$bpjs_jht = $jht * $result_karyawan['gaji'];
+$bpjs_jp = $jp * $result_karyawan['gaji'];
+
+$tgl = $result_gaji['periode'];
+$date  = date_create($tgl);
+$periode = date_format($date, "m-Y");
 
 $tunjangan = $result_karyawan['gaji'] + $uang_makan + $uang_transport;
-$pendapatan = $tunjangan + $uang_lembur;
+$pendapatan = $tunjangan + $uang_lembur + $bpjs_jk + $bpjs_jkm + $bpjs_jkk;
 
 $html = '<!DOCTYPE html>
 <html lang="en">
@@ -92,8 +136,8 @@ $html = '<!DOCTYPE html>
             <td style="width: 200px ">: ' . $nik . '</td>
         </tr>
         <tr>
-            <td style=" width:200px ">Tanggal</td>
-            <td colspan="2">: ' . $result_gaji["periode"] . '</td>
+            <td style=" width:200px ">Periode</td>
+            <td colspan="2">: ' . $periode . '</td>
             <td style="width:20px "></td>
             <td style="width:200px ">Nama Karyawan</td>
             <td>: ' . $result_karyawan["nama"] . '</td>
@@ -148,6 +192,29 @@ $html = '<!DOCTYPE html>
             <td>: Rp. ' . $uang_pph . '</td>
         </tr>
         <tr>
+        <td >BPJS <hr></td>
+        <td colspan="3" style="width: 20px"></td>
+        <td >BPJS <hr></td>
+        </tr>
+        <tr>
+            <td style="width: 200px">Tunjangan JK</td>
+            <td colspan="2">: Rp. ' . $bpjs_jk . '</td>
+            <td style="width: 20px"></td>
+            <td style="width: 200px">Potongan JHT</td>
+            <td>: Rp. ' . $bpjs_jht . '</td>
+        </tr>
+        <tr>
+            <td style="width: 200px">Tunjangan JKM</td>
+            <td colspan="2">: Rp. ' . $bpjs_jkm . '</td>
+            <td style="width: 20px"></td>
+            <td style="width: 200px">Potongan JP</td>
+            <td>: Rp. ' . $bpjs_jp . '</td>
+        </tr>
+        <tr>
+            <td style="width: 200px">Tunjangan JKK</td>
+            <td colspan="2">: Rp. ' . $bpjs_jkk . '</td>
+        </tr>
+        <tr>
             <td colspan="7">
                 <hr>
             </td>
@@ -176,8 +243,8 @@ $html = '<!DOCTYPE html>
             <td align="center" style="width:100px ">Diterima</td>
         </tr>
         <tr>
-            <td style=" width:200px ">Tanggal</td>
-            <td colspan="2">: ' . $result_gaji["periode"] . '</td>
+            <td style=" width:200px ">Periode</td>
+            <td colspan="2">: ' . $periode . '</td>
         </tr>
         <tr>
             <td style="width:200px ">Departemen</td>
