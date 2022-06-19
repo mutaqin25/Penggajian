@@ -2,8 +2,7 @@
 include '../config.php';
 
 if (isset($_POST['hitung'])) {
-    $id = $_GET['id'];
-    // menangkap data yang di kirim dari form
+    // $id = $_GET['id'];
     $nik = $_POST['nik'];
     $bulan = $_POST['bulan'];
     $tahun = $_POST['tahun'];
@@ -19,6 +18,9 @@ if (isset($_POST['hitung'])) {
     $data_gaji = mysqli_fetch_array($cek_gaji);
     $gaji = $data_gaji['gaji'];
 
+    $cek_bpjs = mysqli_query($conn, "select bpjs as bpjs from karyawan where nik = $nik");
+    $data_bpjs = mysqli_fetch_array($cek_bpjs);
+
     // cek status
     $cek_status = mysqli_query($conn, "select status as status from karyawan where nik = $nik");
     $data_status = mysqli_fetch_array($cek_status);
@@ -28,6 +30,9 @@ if (isset($_POST['hitung'])) {
     $data_periode = mysqli_fetch_array($cek_periode);
     $periode = $data_periode['periode'];
     // ---------------------------- cek data ---------------------------- //
+
+
+
 
     if ($periode != $tanggal) {
 
@@ -62,12 +67,64 @@ if (isset($_POST['hitung'])) {
 
         // ---------------------------- potongan ---------------------------- //
 
+        // ---------------------------- cek BPJS ---------------------------- //
+
+
+        $exp_bpjs = explode(",", $data_bpjs['bpjs']);
+        if (in_array(
+            "Jaminan Kesehatan",
+            $exp_bpjs
+        )) {
+            $jk = 0.04; //penerimaan
+        } else {
+            $jk = 0;
+        }
+        if (in_array("Jaminan Kecelakaan Kerja", $exp_bpjs)) {
+            $jkk = 0.0024; //penerimaan
+        } else {
+            $jkk = 0;
+        }
+        if (in_array("Jaminan Hari Tua", $exp_bpjs)) {
+            $jht = 0.02; //pengurangan
+        } else {
+            $jht = 0;
+        }
+        if (in_array("Jaminan Pensiun", $exp_bpjs)) {
+            $jp = 0.01; //pengrangan
+        } else {
+            $jp = 0;
+        }
+        if (in_array("Jaminan Kematian", $exp_bpjs)) {
+            $jkm = 0.003; // penambahan
+        } else {
+            $jkm = 0;
+        }
+
+        // ---------------------------- cek BPJS ---------------------------- //
+
+        // ---------------------------- Penerimaan ---------------------------- //
         $tunjangan = $uang_makan + $uang_transport;
-        $pendapatan = $tunjangan + $uang_lembur;
-        $potongan = $uang_sakit + $uang_tidak_masuk + $uang_terlambat;
+        $bpjs_jkk = $jkk * $gaji;
+        $bpjs_jk = $jk * $gaji;
+        $bpjs_jkm = $jkm * $gaji;
+        $pendapatan = $tunjangan + $uang_lembur + $bpjs_jkk + $bpjs_jk + $bpjs_jkm;
+        echo $pendapatan . '=' . $tunjangan . '+' . $uang_lembur . '+' . $bpjs_jkk . '+' . $bpjs_jk . '+' . $bpjs_jkm;
+        // ---------------------------- Penerimaan ---------------------------- //
 
+        // ---------------------------- Potongan ---------------------------- //
+        $bpjs_jht = $jht * $gaji;
+        $bpjs_jp = $jp * $gaji;
+        $potongan = $uang_sakit + $uang_tidak_masuk + $uang_terlambat + $bpjs_jht + $bpjs_jp;
+        echo '<br>' . $potongan . '=' . $uang_sakit . '+' . $uang_tidak_masuk . '+' . $uang_terlambat . '+' . $bpjs_jht . '+' . $bpjs_jp;
+        // ---------------------------- Potongan ---------------------------- //
+
+        // ---------------------------- gaji neto ---------------------------- //
+        $bpjs = $bpjs_jk + $bpjs_jkm + $bpjs_jkk - $bpjs_jht - $bpjs_jp;
         $gaji_neto =  $gaji + $pendapatan - $potongan;
+        echo '<br> bpjs ' . $bpjs . '=' . $bpjs_jk . '+' . $bpjs_jkm . '+' . $bpjs_jkk . '-' . $bpjs_jht . '-' . $bpjs_jp;
 
+        echo '<br> gaji_neto = ' . $gaji_neto;
+        // ---------------------------- gaji neto ---------------------------- //
 
 
         // ---------------------------------- hitung pph 21 ---------------------------------- //
@@ -126,7 +183,7 @@ if (isset($_POST['hitung'])) {
 
 
         // menginput data ke database
-        $sql = "INSERT INTO gaji_bulanan (id_gaji, periode, nik, tanggal, gaji_pokok, uang_tunjangan, uang_lembur, uang_potongan, pph21, gaji_bersih) VALUE ('$id', '$tanggal', '$nik', '$tgl_now', '$gaji', '$tunjangan', '$uang_lembur', '$potongan', '$pph21', '$gaji_bersih')";
+        $sql = "INSERT INTO gaji_bulanan (id_gaji, periode, nik, tanggal, gaji_pokok, uang_tunjangan, uang_lembur, uang_potongan, bpjs, pph21, gaji_bersih) VALUE ('$id_gaji', '$tanggal', '$nik', '$tgl_now', '$gaji', '$tunjangan', '$uang_lembur', '$potongan', '$bpjs', '$pph21', '$gaji_bersih')";
         echo '<br> ' . $sql;
         $query = mysqli_query($conn, $sql);
         echo mysqli_error($conn);
