@@ -208,7 +208,7 @@
                 <div class="icon">
                   <i class="fa-solid fa-users"></i>
                 </div>
-                <a href="../karyawan/form-karyawan.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->
@@ -268,7 +268,7 @@
                 <div class="icon">
                   <i class="fa-solid fa-users"></i>
                 </div>
-                <a href="../user/form-user.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->

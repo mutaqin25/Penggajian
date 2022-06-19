@@ -299,12 +299,17 @@
                                 <div class="col-sm-4">
                                     <input type="text" name="gaji" value="<?php echo $d['gaji'] ?>" dissable required class="form-control" placeholder="Gaji">
                                 </div>
+                                <label for="" class="col-sm-2 col-form-label">BPJS</label>
+                                <div class="col-sm-4">
+                                    <textarea type="text" disabled name="bpjs" value="" required class="form-control" placeholder="BPJS"><?php echo $d['bpjs'] ?>
+                                    </textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
                                 <label for="" class="col-sm-2 col-form-label">Tanggal Masuk</label>
                                 <div class="col-sm-4">
                                     <input type="date" disabled name="tgl_masuk" value="<?php echo $d['tgl_masuk'] ?>" required class="form-control" placeholder="Tanggal Masuk">
                                 </div>
-                            </div>
-                            <div class="form-group row">
                                 <label for="" class="col-sm-2 col-form-label">Pendidikan</label>
                                 <div class="col-sm-4">
                                     <input type="text" name="nama" required class="form-control" disabled placeholder="Nama" value="<?php echo $d['pendidikan'] ?>">

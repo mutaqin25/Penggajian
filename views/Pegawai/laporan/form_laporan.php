@@ -267,6 +267,7 @@
                                             <th>Uang Tunjangan</th>
                                             <th>Uang Lembur</th>
                                             <th>Uang Potongan</th>
+                                            <th>BPJS</th>
                                             <th>PPH</th>
                                             <th>Gaji Bersih</th>
 
@@ -280,6 +281,7 @@
                                             <th>Uang Tunjangan</th>
                                             <th>Uang Lembur</th>
                                             <th>Uang Potongan</th>
+                                            <th>BPJS</th>
                                             <th>PPH</th>
                                             <th>Gaji Bersih</th>
                                         </tr>
@@ -300,6 +302,7 @@
                                                 <td>Rp. <?php echo $d['uang_tunjangan'] ?></td>
                                                 <td>Rp. <?php echo $d['uang_lembur'] ?></td>
                                                 <td>Rp. <?php echo $d['uang_potongan'] ?></td>
+                                                <td>Rp. <?php echo $d['bpjs'] ?></td>
                                                 <td>Rp. <?php echo $d['pph21'] ?></td>
                                                 <td>Rp. <?php echo $d['gaji_bersih'] ?></td>
                                             </tr>

@@ -27,6 +27,7 @@ p<?php
                                             <th>Uang Tunjangan</th>
                                             <th>Uang Lembur</th>
                                             <th>Uang Potongan</th>
+                                            <th>BPJS</th>
                                             <th>PPH</th>
                                             <th>Gaji Bersih</th>
                                         </tr>
@@ -42,6 +43,7 @@ p<?php
             <td>Rp. ' . $row["uang_tunjangan"] . ' </td>
             <td>Rp. ' . $row["uang_lembur"] . ' </td>
             <td>Rp. ' . $row["uang_potongan"] . ' </td>
+            <td>Rp. ' . $row["bpjs"] . ' </td>
             <td>Rp. ' . $row["pph21"] . ' </td>
             <td>Rp. ' . $row["gaji_bersih"] . ' </td>
             </tr>';

@@ -265,8 +265,8 @@
                                     <th>BPJS</th>
                                     <th>Tanggal Masuk</th>
                                     <th>Pendidikan</th>
-                                    <!-- <th>Foto</th>
-                                    <th>QR Code</th> -->
+                                    <th>Foto</th>
+                                    <th>QR Code</th>
                                     <th>ket</th>
                                 </tr>
                             </thead>
@@ -287,8 +287,8 @@
                                     <th>BPJS</th>
                                     <th>Tanggal Masuk</th>
                                     <th>Pendidikan</th>
-                                    <!-- <th>Foto</th>
-                                    <th>QR Code</th> -->
+                                    <th>Foto</th>
+                                    <th>QR Code</th>
                                     <th>ket</th>
                                 </tr>
                             </tfoot>
@@ -315,11 +315,11 @@
                                         <td><?php echo $d['tgl_masuk'] ?></td>
                                         <td><?php echo $d['pendidikan'] ?></td>
 
-                                        <!-- <td><img style="width: 64px;" src="../../../assets/images/profil/<?php echo $d['foto'] ?>"></td>
-                                        <td><img style="width: 64px;" src="../../../assets/images/QRCode/<?php echo $d['qrcode'] ?>"></td> -->
+                                        <td><img style="width: 64px;" src="../../../assets/images/profil/<?php echo $d['foto'] ?>"></td>
+                                        <td><img style="width: 64px;" src="../../../assets/images/QRCode/<?php echo $d['qrcode'] ?>"></td>
                                         <td>
-                                            <a class="btn btn-primary" role="button" target="_blank" href="pdf-id-card.php?nik=<?php echo $d['nik'] ?>"><i class="fa-solid fa-id-card-clip"></i></a>
-                                            <a class="btn btn-success" href="edit-karyawan.php?id=<?php echo $d['nik']; ?>" data-toggle="tooltip" title="Edit" role="button"><i class="fa-solid fa-pen-to-square"></i></a>
+                                            <a class="btn btn-primary" role="button" target="_blank" href="pdf-id-card.php?nik=<?php echo $d['nik'] ?>"><i class="fa-solid fa-id-card-clip"></i></a> &nbsp;
+                                            <a class="btn btn-success" href="edit-karyawan.php?id=<?php echo $d['nik']; ?>" data-toggle="tooltip" title="Edit" role="button"><i class="fa-solid fa-pen-to-square"></i></a> &nbsp;
                                             <a class="btn btn-danger" href="../../../actions/delete-karyawan.php?id=<?php echo $d['nik']; ?>" data-toggle="tooltip" title="Delete" role="button"><i class="fa-solid fa-trash-can"></i></a>
                                         </td>
                                     </tr>

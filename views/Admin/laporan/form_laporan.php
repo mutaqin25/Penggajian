@@ -235,6 +235,7 @@
                                             <th>Jabatan</th>
                                             <th>Shift</th>
                                             <th>Gaji</th>
+                                            <th>BPJS</th>
                                             <th>Tanggal Masuk</th>
                                             <th>Pendidikan</th>
                                             <th>Foto</th>
@@ -255,6 +256,7 @@
                                             <th>Jabatan</th>
                                             <th>Shift</th>
                                             <th>Gaji</th>
+                                            <th>BPJS</th>
                                             <th>Tanggal Masuk</th>
                                             <th>Pendidikan</th>
                                             <th>Foto</th>
@@ -281,6 +283,7 @@
                                                 <td><?php echo $d['jabatan'] ?></td>
                                                 <td><?php echo $d['shift'] ?></td>
                                                 <td>Rp.<?php echo $d['gaji'] ?></td>
+                                                <td> <?php echo $d['bpjs'] ?></td>
                                                 <td><?php echo $d['tgl_masuk'] ?></td>
                                                 <td><?php echo $d['pendidikan'] ?></td>
                                                 <td><img style="width: 64px;" src="../../../assets/images/profil/<?php echo $d['foto'] ?>"></td>
@@ -375,6 +378,7 @@
                                             <th>Uang Tunjangan</th>
                                             <th>Uang Lembur</th>
                                             <th>Uang Potongan</th>
+                                            <th>BPJS</th>
                                             <th>PPH</th>
                                             <th>Gaji Bersih</th>
 
@@ -388,6 +392,7 @@
                                             <th>Uang Tunjangan</th>
                                             <th>Uang Lembur</th>
                                             <th>Uang Potongan</th>
+                                            <th>BPJS</th>
                                             <th>PPH</th>
                                             <th>Gaji Bersih</th>
                                         </tr>
@@ -406,6 +411,7 @@
                                                 <td>Rp. <?php echo $d['uang_tunjangan'] ?></td>
                                                 <td>Rp. <?php echo $d['uang_lembur'] ?></td>
                                                 <td>Rp. <?php echo $d['uang_potongan'] ?></td>
+                                                <td>Rp. <?php echo $d['bpjs'] ?></td>
                                                 <td>Rp. <?php echo $d['pph21'] ?></td>
                                                 <td>Rp. <?php echo $d['gaji_bersih'] ?></td>
                                             </tr>

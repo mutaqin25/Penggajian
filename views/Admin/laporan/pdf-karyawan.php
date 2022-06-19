@@ -31,6 +31,7 @@ p<?php
                                             <th>No Hp</th>
                                             <th>Jabatan</th>
                                             <th>Shift</th>
+                                            <th>BPJS</th>
                                             <th>Gaji</th>
                                             <th>Tanggal Masuk</th>
                                             <th>Pendidikan</th>
@@ -53,6 +54,7 @@ p<?php
             <td>' . $row['no_hp'] . '</td>
             <td>' . $row['jabatan'] . '</td>
             <td>' . $row['shift'] . '</td>
+            <td>' . $row['bpjs'] . '</td>
             <td>Rp.' . $row['gaji'] . '</td>
             <td>' . $row['tgl_masuk'] . '</td>
             <td>' . $row['pendidikan'] . '</td>

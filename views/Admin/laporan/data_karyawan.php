@@ -21,6 +21,7 @@ header("Content-Disposition: attachment; filename=Data Karyawan.xls");
             <th>No Hp</th>
             <th>Jabatan</th>
             <th>Shift</th>
+            <th>BPJS</th>
             <th>Gaji</th>
             <th>Tanggal Masuk</th>
             <th>Pendidikan</th>
@@ -45,6 +46,7 @@ header("Content-Disposition: attachment; filename=Data Karyawan.xls");
                 <td><?php echo $d['no_hp'] ?></td>
                 <td><?php echo $d['jabatan'] ?></td>
                 <td><?php echo $d['shift'] ?></td>
+                <td><?php echo $d['bpjs'] ?></td>
                 <td>Rp.<?php echo $d['gaji'] ?></td>
                 <td><?php echo $d['tgl_masuk'] ?></td>
                 <td><?php echo $d['pendidikan'] ?></td>
