@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 17, 2022 at 12:11 PM
+-- Generation Time: Jun 19, 2022 at 06:57 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -47,8 +47,26 @@ INSERT INTO `absen` (`id_absen`, `nik`, `tanggal`, `jam_masuk`, `ket_masuk`, `ja
 (2, 20160910024, '2022-06-16', '07:03:00', 'Tepat Waktu', '18:03:00', 'Lembur', 'Hadir'),
 (3, 20160910024, '2022-06-17', '00:00:00', '', '00:00:00', '', 'Sakit'),
 (4, 20160910024, '2022-06-18', '00:00:00', '', '00:00:00', '', 'Tidak Masuk'),
-(5, 20160910024, '2022-07-15', '00:00:00', '', '00:00:00', '', 'Sakit'),
-(6, 213123, '2022-06-30', NULL, NULL, NULL, NULL, NULL);
+(5, 20160910024, '2022-07-15', '00:00:00', '', '00:00:00', '', 'Sakit');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bpjs`
+--
+
+CREATE TABLE `bpjs` (
+  `id_bpjs` int(15) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `nilai` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bpjs`
+--
+
+INSERT INTO `bpjs` (`id_bpjs`, `nama`, `nilai`) VALUES
+(1, 'Jaminan Kesehatan', 0.05);
 
 -- --------------------------------------------------------
 
@@ -65,6 +83,7 @@ CREATE TABLE `gaji_bulanan` (
   `uang_tunjangan` bigint(30) NOT NULL,
   `uang_lembur` bigint(30) NOT NULL,
   `uang_potongan` bigint(30) NOT NULL,
+  `bpjs` bigint(20) NOT NULL,
   `pph21` bigint(30) NOT NULL,
   `gaji_bersih` bigint(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -73,8 +92,8 @@ CREATE TABLE `gaji_bulanan` (
 -- Dumping data for table `gaji_bulanan`
 --
 
-INSERT INTO `gaji_bulanan` (`id_gaji`, `periode`, `nik`, `tanggal`, `gaji_pokok`, `uang_tunjangan`, `uang_lembur`, `uang_potongan`, `pph21`, `gaji_bersih`) VALUES
-(1, '2022-06', 20160910024, '2022-06-15', 4000000, 80000, 138728, 275000, 0, 3943728);
+INSERT INTO `gaji_bulanan` (`id_gaji`, `periode`, `nik`, `tanggal`, `gaji_pokok`, `uang_tunjangan`, `uang_lembur`, `uang_potongan`, `bpjs`, `pph21`, `gaji_bersih`) VALUES
+(1, '2022-06', 20160910024, '2022-06-19', 4000000, 80000, 138728, 275000, 181600, 0, 4125328);
 
 -- --------------------------------------------------------
 
@@ -94,6 +113,7 @@ CREATE TABLE `karyawan` (
   `jabatan` varchar(30) NOT NULL,
   `shift` varchar(15) NOT NULL,
   `gaji` bigint(50) NOT NULL,
+  `bpjs` varchar(100) NOT NULL,
   `tgl_masuk` date NOT NULL,
   `pendidikan` varchar(50) NOT NULL,
   `foto` varchar(100) NOT NULL,
@@ -104,10 +124,11 @@ CREATE TABLE `karyawan` (
 -- Dumping data for table `karyawan`
 --
 
-INSERT INTO `karyawan` (`nik`, `nama`, `jenis_kelamin`, `tgl_lahir`, `alamat`, `status`, `agama`, `no_hp`, `jabatan`, `shift`, `gaji`, `tgl_masuk`, `pendidikan`, `foto`, `qrcode`) VALUES
-(8634242467, 'Erik', 'Laki-Laki', '2018-05-10', 'adada                                                                                               ', 'Menikah', 'Islam', '0834535324', 'Pelayan', 'Shift 1', 4000000, '2022-04-21', 'Kejuruan', '1646752479_javascript_original_logo_icon_146455.png', '8634242467.png'),
-(20160910024, 'Muttaqin', 'Laki-Laki', '1998-10-25', 'Cirebon                                                                                             ', 'Belum Menikah', 'Islam', '084245224233', 'Pelayan', 'Shift 1', 4000000, '2022-02-08', 'Sarjana', '1782092867_985969.jpg', '20160910024.png'),
-(3333333333333, 'Erika', 'Perempuan', '1997-08-06', '  adsad                                                                                             ', 'Menikah', 'Hindu', '0824242423', 'Pelayan', 'Shift 2', 8000000, '2022-05-10', 'Diploma', '985652032_vue-js-1.png', '3333333333333.png');
+INSERT INTO `karyawan` (`nik`, `nama`, `jenis_kelamin`, `tgl_lahir`, `alamat`, `status`, `agama`, `no_hp`, `jabatan`, `shift`, `gaji`, `bpjs`, `tgl_masuk`, `pendidikan`, `foto`, `qrcode`) VALUES
+(8634242467, 'Erik', 'Laki-Laki', '2018-05-10', 'adada                                                                                               ', 'Menikah', 'Islam', '0834535324', 'Pelayan', 'Shift 1', 4000000, '', '2022-04-21', 'Kejuruan', '1646752479_javascript_original_logo_icon_146455.png', '8634242467.png'),
+(20160910024, 'Muttaqin', 'Laki-Laki', '1998-10-25', 'Cirebon                                                                                             ', 'Belum Menikah', 'Islam', '084245224233', 'Pelayan', 'Shift 1', 4000000, 'Jaminan Kecelakaan Kerja,Jaminan Kematian,Jaminan Kesehatan', '2022-02-08', 'Sarjana', '1782092867_985969.jpg', '20160910024.png'),
+(99999999999, 'Andora', 'Laki-Laki', '2022-06-17', 'nnnnn                                            ', 'Belum Menikah', 'Islam', '084245224233', 'Pelayan', 'Shift 1', 5000000, 'Jaminan Kecelakaan Kerja,Jaminan Kematian,Jaminan Hari Tua,Jaminan Pensiun', '2022-06-01', 'Sekolah Menengah Atas', '1170555466_1653512.jpg', '99999999999.png'),
+(3333333333333, 'Erika', 'Perempuan', '1997-08-06', '  adsad                                                                                             ', 'Menikah', 'Hindu', '0824242423', 'Pelayan', 'Shift 2', 8000000, 'Jaminan Kecelakaan Kerja,Jaminan Kematian', '2022-05-10', 'Diploma', '985652032_vue-js-1.png', '3333333333333.png');
 
 -- --------------------------------------------------------
 
@@ -180,6 +201,12 @@ INSERT INTO `user` (`nik`, `nama`, `jenis_kelamin`, `username`, `password`, `lev
 ALTER TABLE `absen`
   ADD PRIMARY KEY (`id_absen`),
   ADD KEY `nik` (`nik`);
+
+--
+-- Indexes for table `bpjs`
+--
+ALTER TABLE `bpjs`
+  ADD PRIMARY KEY (`id_bpjs`);
 
 --
 -- Indexes for table `gaji_bulanan`
