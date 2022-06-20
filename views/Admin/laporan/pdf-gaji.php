@@ -39,13 +39,13 @@ p<?php
             <td>' . $i++ . ' </td>
             <td>' . $row["nik"] . ' </td>
             <td>' . $row["periode"] . ' </td>
-            <td>Rp. ' . $row["gaji_pokok"] . ' </td>
-            <td>Rp. ' . $row["uang_tunjangan"] . ' </td>
-            <td>Rp. ' . $row["uang_lembur"] . ' </td>
-            <td>Rp. ' . $row["uang_potongan"] . ' </td>
-            <td>Rp. ' . $row["bpjs"] . ' </td>
-            <td>Rp. ' . $row["pph21"] . ' </td>
-            <td>Rp. ' . $row["gaji_bersih"] . ' </td>
+            <td>Rp. ' . number_format($row["gaji_pokok"], 0, ",", ".") . ' </td>
+            <td>Rp. ' . number_format($row["uang_tunjangan"], 0, ",", ".") . ' </td>
+            <td>Rp. ' . number_format($row["uang_lembur"], 0, ",", ".") . ' </td>
+            <td>Rp. ' . number_format($row["uang_potongan"], 0, ",", ".") . ' </td>
+            <td>Rp. ' . number_format($row["bpjs"], 0, ",", ".") . ' </td>
+            <td>Rp. ' . number_format($row["pph21"], 0, ",", ".") . ' </td>
+            <td>Rp. ' . number_format($row["gaji_bersih"], 0, ",", ".") . ' </td>
             </tr>';
     }
 

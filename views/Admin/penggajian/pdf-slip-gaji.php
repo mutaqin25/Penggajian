@@ -119,6 +119,7 @@ $html = '<!DOCTYPE html>
 </style>
 
 <body>
+<h3 align="center"><img style="width:300px" src="../../../assets/images/logo/dinobites.png"></h3>
     <table align="center">
 
         <tr>
@@ -165,31 +166,31 @@ $html = '<!DOCTYPE html>
         </tr>
         <tr>
             <td style="width: 200px">Gaji Pokok</td>
-            <td colspan="2">: Rp. ' . $result_karyawan["gaji"] . '</td>
+            <td colspan="2">: Rp. ' . number_format($result_karyawan["gaji"], 0, ",", ".") . '</td>
             <td style="width: 20px"></td>
             <td style="width: 200px">Potongan Terlamabat</td>
-            <td>: Rp. ' . $uang_terlambat . '</td>
+            <td>: Rp. ' . number_format($uang_terlambat, 0, ",", ".") . '</td>
         </tr>
         <tr>
             <td style="width: 200px">Uang Makan</td>
-            <td colspan="2">: Rp. ' . $uang_makan . '</td>
+            <td colspan="2">: Rp. ' . number_format($uang_makan, 0, ",", ".") . '</td>
             <td style="width: 20px"></td>
             <td style="width: 200px">Potongan Tidak Masuk</td>
-            <td>: Rp. ' . $uang_tidak_masuk . '</td>
+            <td>: Rp. ' . number_format($uang_tidak_masuk, 0, ",", ".") . '</td>
         </tr>
         <tr>
             <td style="width: 200px">Uang Transport</td>
-            <td colspan="2">: Rp. ' . $uang_transport . '</td>
+            <td colspan="2">: Rp. ' . number_format($uang_transport, 0, ",", ".") . '</td>
             <td style="width: 20px"></td>
             <td style="width: 200px">Potongan Sakit</td>
-            <td>: Rp. ' . $uang_sakit . '</td>
+            <td>: Rp. ' . number_format($uang_sakit, 0, ",", ".") . '</td>
         </tr>
         <tr>
             <td style="width: 200px">Uang Lembur</td>
-            <td colspan="2">: Rp. ' . $uang_lembur . '</td>
+            <td colspan="2">: Rp. ' . number_format($uang_lembur, 0, ",", ".") . '</td>
             <td style="width: 20px"></td>
             <td style="width: 200px">Potongan PPH</td>
-            <td>: Rp. ' . $uang_pph . '</td>
+            <td>: Rp. ' . number_format($uang_pph, 0, ",", ".") . '</td>
         </tr>
         <tr>
         <td >BPJS <hr></td>
@@ -198,21 +199,21 @@ $html = '<!DOCTYPE html>
         </tr>
         <tr>
             <td style="width: 200px">Tunjangan JK</td>
-            <td colspan="2">: Rp. ' . $bpjs_jk . '</td>
+            <td colspan="2">: Rp. ' . number_format($bpjs_jk, 0, ",", ".") . '</td>
             <td style="width: 20px"></td>
             <td style="width: 200px">Potongan JHT</td>
-            <td>: Rp. ' . $bpjs_jht . '</td>
+            <td>: Rp. ' . number_format($bpjs_jht, 0, ",", ".") . '</td>
         </tr>
         <tr>
             <td style="width: 200px">Tunjangan JKM</td>
-            <td colspan="2">: Rp. ' . $bpjs_jkm . '</td>
+            <td colspan="2">: Rp. ' . number_format($bpjs_jkm, 0, ",", ".") . '</td>
             <td style="width: 20px"></td>
             <td style="width: 200px">Potongan JP</td>
-            <td>: Rp. ' . $bpjs_jp . '</td>
+            <td>: Rp. ' . number_format($bpjs_jp, 0, ",", ".") . '</td>
         </tr>
         <tr>
             <td style="width: 200px">Tunjangan JKK</td>
-            <td colspan="2">: Rp. ' . $bpjs_jkk . '</td>
+            <td colspan="2">: Rp. ' . number_format($bpjs_jkk, 0, ",", ".") . '</td>
         </tr>
         <tr>
             <td colspan="7">
@@ -221,14 +222,14 @@ $html = '<!DOCTYPE html>
         </tr>
         <tr>
             <td style="width: 200px">Total Penerimaan</td>
-            <td colspan="2">: Rp. ' . $pendapatan . '</td>
+            <td colspan="2">: Rp. ' . number_format($pendapatan, 0, ",", ".") . '</td>
             <td style="width: 20px"></td>
             <td style="width: 200px">Total Potongan</td>
-            <td>: Rp. ' . $result_gaji["uang_potongan"] . '</td>
+            <td>: Rp. ' . number_format($result_gaji["uang_potongan"], 0, ",", ".") . '</td>
         </tr>
         <tr>
             <td style="width: 200px">Gaji Yang Diterima</td>
-            <td colspan="2">: Rp. ' . $result_gaji["gaji_bersih"] . '</td>
+            <td colspan="2">: Rp. ' . number_format($result_gaji["gaji_bersih"], 0, ",", ".") . '</td>
         </tr>
         <tr>
             <td colspan="7">

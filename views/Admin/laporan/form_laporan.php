@@ -282,7 +282,7 @@
                                                 <td><?php echo $d['no_hp'] ?></td>
                                                 <td><?php echo $d['jabatan'] ?></td>
                                                 <td><?php echo $d['shift'] ?></td>
-                                                <td>Rp.<?php echo $d['gaji'] ?></td>
+                                                <td>Rp. <?php echo number_format($d['gaji'], 0, ",", ".") ?></td>
                                                 <td> <?php echo $d['bpjs'] ?></td>
                                                 <td><?php echo $d['tgl_masuk'] ?></td>
                                                 <td><?php echo $d['pendidikan'] ?></td>
@@ -407,13 +407,13 @@
                                             <tr>
                                                 <td><?php echo $no++ ?></td>
                                                 <td><?php echo $d['periode'] ?></td>
-                                                <td>Rp. <?php echo $d['gaji_pokok'] ?></td>
-                                                <td>Rp. <?php echo $d['uang_tunjangan'] ?></td>
-                                                <td>Rp. <?php echo $d['uang_lembur'] ?></td>
-                                                <td>Rp. <?php echo $d['uang_potongan'] ?></td>
-                                                <td>Rp. <?php echo $d['bpjs'] ?></td>
-                                                <td>Rp. <?php echo $d['pph21'] ?></td>
-                                                <td>Rp. <?php echo $d['gaji_bersih'] ?></td>
+                                                <td>Rp. <?php echo number_format($d['gaji_pokok'], 0, ",", ".") ?></td>
+                                                <td>Rp. <?php echo number_format($d['uang_tunjangan'], 0, ",", ".") ?></td>
+                                                <td>Rp. <?php echo number_format($d['uang_lembur'], 0, ",", ".") ?></td>
+                                                <td>Rp. <?php echo number_format($d['uang_potongan'], 0, ",", ".") ?></td>
+                                                <td>Rp. <?php echo number_format($d['bpjs'], 0, ",", ".") ?></td>
+                                                <td>Rp. <?php echo number_format($d['pph21'], 0, ",", ".") ?></td>
+                                                <td>Rp. <?php echo number_format($d['gaji_bersih'], 0, ",", ".") ?></td>
                                             </tr>
                                         <?php
                                         }

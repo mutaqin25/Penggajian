@@ -55,7 +55,7 @@ p<?php
             <td>' . $row['jabatan'] . '</td>
             <td>' . $row['shift'] . '</td>
             <td>' . $row['bpjs'] . '</td>
-            <td>Rp.' . $row['gaji'] . '</td>
+            <td>Rp.' . number_format($row['gaji'], 0, ",", ".") . '</td>
             <td>' . $row['tgl_masuk'] . '</td>
             <td>' . $row['pendidikan'] . '</td>
             <td><img style="width: 67px;" src="../../../assets/images/profil/' . $row['foto'] . '"></td>

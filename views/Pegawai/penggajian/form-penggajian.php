@@ -255,7 +255,7 @@
                                     <label for="" class="col-sm-2 col-form-label">Gaji Pokok</label>
                                     <div class="col-sm-5">
 
-                                        <input type="text" readonly name="nama" required class="form-control" placeholder="Nama" value="<?php echo $d['gaji'] ?>">
+                                        <input type="text" readonly name="nama" required class="form-control" placeholder="Nama" value="Rp. <?php echo number_format($d['gaji'], 0, ",", ".") ?>">
                                     </div>
                                 </div>
                             </div>
@@ -311,14 +311,12 @@
                                     <tr>
                                         <td><?php echo $no++ ?></td>
                                         <td style="width:10% ;"><?php echo $d['tanggal'] ?></td>
-                                        <td>Rp. <?php echo $d['uang_makan'] ?></td>
-                                        <td>Rp. <?php echo $d['uang_transport'] ?></td>
-                                        <td>Rp. <?php echo $d['uang_lembur'] ?></td>
-                                        <td>Rp. <?php echo $d['uang_terlambat'] ?></td>
-                                        <td>Rp. <?php echo $d['uang_sakit'] ?></td>
-                                        <td>Rp. <?php echo $d['uang_tidak_masuk'] ?></td>
-
-
+                                        <<td>Rp. <?php echo number_format($d['uang_makan'], 0, ",", ".") ?></td>
+                                            <td>Rp. <?php echo number_format($d['uang_transport'], 0, ",", ".") ?></td>
+                                            <td>Rp. <?php echo number_format($d['uang_lembur'], 0, ",", ".") ?></td>
+                                            <td>Rp. <?php echo number_format($d['uang_terlambat'], 0, ",", ".") ?></td>
+                                            <td>Rp. <?php echo number_format($d['uang_sakit'], 0, ",", ".") ?></td>
+                                            <td>Rp. <?php echo number_format($d['uang_tidak_masuk'], 0, ",", ".") ?></td>
                                     </tr>
                                 <?php
                                 }
@@ -374,13 +372,13 @@
                                     <tr>
                                         <td><?php echo $no++ ?></td>
                                         <td><?php echo $d['periode'] ?></td>
-                                        <td>Rp. <?php echo $d['gaji_pokok'] ?></td>
-                                        <td>Rp. <?php echo $d['uang_tunjangan'] ?></td>
-                                        <td>Rp. <?php echo $d['uang_lembur'] ?></td>
-                                        <td>Rp. <?php echo $d['uang_potongan'] ?></td>
-                                        <td>Rp. <?php echo $d['bpjs'] ?></td>
-                                        <td>Rp. <?php echo $d['pph21'] ?></td>
-                                        <td>Rp. <?php echo $d['gaji_bersih'] ?></td>
+                                        <td>Rp. <?php echo number_format($d['gaji_pokok'], 0, ",", ".") ?></td>
+                                        <td>Rp. <?php echo number_format($d['uang_tunjangan'], 0, ",", ".") ?></td>
+                                        <td>Rp. <?php echo number_format($d['uang_lembur'], 0, ",", ".") ?></td>
+                                        <td>Rp. <?php echo number_format($d['uang_potongan'], 0, ",", ".") ?></td>
+                                        <td>Rp. <?php echo number_format($d['bpjs'], 0, ",", ".") ?></td>
+                                        <td>Rp. <?php echo number_format($d['pph21'], 0, ",", ".") ?></td>
+                                        <td>Rp. <?php echo number_format($d['gaji_bersih'], 0, ",", ".") ?></td>
 
                                     </tr>
                                 <?php
