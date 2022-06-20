@@ -310,7 +310,7 @@
                                         <td><?php echo $d['no_hp'] ?></td>
                                         <td><?php echo $d['jabatan'] ?></td>
                                         <td><?php echo $d['shift'] ?></td>
-                                        <td>Rp.<?php echo $d['gaji'] ?></td>
+                                        <td>Rp. <?php echo number_format($d['gaji'], 0, ",", ".") ?></td>
                                         <td><?php echo $d['bpjs'] ?></td>
                                         <td><?php echo $d['tgl_masuk'] ?></td>
                                         <td><?php echo $d['pendidikan'] ?></td>
