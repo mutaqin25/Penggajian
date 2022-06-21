@@ -252,13 +252,13 @@
                                     <div class="form-group row">
                                         <label for="" class="col-sm-2 col-form-label">Jam Masuk</label>
                                         <div class="col-sm-5">
-                                            <input type="time" name="jam_masuk" value="<?php echo $d['jam_masuk'] ?>" class="form-control" placeholder="Jam Masuk">
+                                            <input type="time" disabled name="jam_masuk" value="<?php echo $d['jam_masuk'] ?>" class="form-control" placeholder="Jam Masuk">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="" class="col-sm-2 col-form-label">Keterangan Masuk</label>
                                         <div class="col-sm-5">
-                                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="ket_masuk">
+                                            <select disabled class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="ket_masuk">
                                                 <option selected value="">Choose...</option>
                                                 <option value="Tepat Waktu" <?php if ($d['ket_masuk'] == 'Tepat Waktu') echo 'selected' ?>>Tepat Waktu</option>
                                                 <option value="Terlamabat" <?php if ($d['ket_masuk'] == 'Terlambat') echo 'selected' ?>>Terlambat</option>
@@ -268,13 +268,13 @@
                                     <div class="form-group row">
                                         <label for="" class="col-sm-2 col-form-label">Jam Keluar</label>
                                         <div class="col-sm-5">
-                                            <input type="time" name="jam_keluar" value="<?php echo $d['jam_keluar'] ?>" class="form-control" placeholder="Jam Keluar">
+                                            <input type="time" disabled name="jam_keluar" value="<?php echo $d['jam_keluar'] ?>" class="form-control" placeholder="Jam Keluar">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="" class="col-sm-2 col-form-label">Keterangan Keluar</label>
                                         <div class="col-sm-5">
-                                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="ket_keluar">
+                                            <select disabled class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="ket_keluar">
                                                 <option selected value="">Choose...</option>
                                                 <option value="Pulang Lebih Awal" <?php if ($d['ket_keluar'] == 'Pulang Lebih Awal') echo 'selected' ?>>Pulang Lebih Awal</option>
                                                 <option value="Tepat Waktu" <?php if ($d['ket_keluar'] == 'Tepat Waktu') echo 'selected' ?>>Tepat Waktu</option>
