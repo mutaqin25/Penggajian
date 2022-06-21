@@ -16,6 +16,7 @@ $html = '<!DOCTYPE html>
     <title>Document</title>
 </head>
 <body>
+<h3 align="center"><img style="width:300px" src="../../../assets/images/logo/dinobites.png"></h3>
 <h1 align="center" >Laporan Data Absen Karyawan</h1>
     <table border="1" align="center">
                                     <thead>
