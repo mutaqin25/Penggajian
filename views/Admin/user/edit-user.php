@@ -223,7 +223,7 @@
                             <form action="../../../actions/update-user.php" method="POST">
                                 <?php
                                 $id = $_GET['id'];
-                                $data = mysqli_query($conn, "select * from user where nik='$id'");
+                                $data = mysqli_query($conn, "select * from user where id_user='$id'");
                                 while ($d = mysqli_fetch_array($data)) {
                                 ?>
                                     <div class="card-body">

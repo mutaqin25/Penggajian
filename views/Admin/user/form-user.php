@@ -249,6 +249,7 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
+                                    <th>Nik</th>
                                     <th>Nama</th>
                                     <th>Jenis Kelamin</th>
                                     <th>Username</th>
@@ -261,6 +262,7 @@
                             <tfoot>
                                 <tr>
                                     <th>No</th>
+                                    <th>Nik</th>
                                     <th>Nama</th>
                                     <th>Jenis Kelamin</th>
                                     <th>Username</th>
@@ -278,13 +280,14 @@
                                 ?>
                                     <tr>
                                         <td><?php echo $no++ ?></td>
+                                        <td><?php echo $d['nik'] ?></td>
                                         <td><?php echo $d['nama'] ?></td>
                                         <td><?php echo $d['jenis_kelamin'] ?></td>
                                         <td><?php echo $d['username'] ?></td>
                                         <td><?php echo $d['password'] ?></td>
                                         <td><?php echo $d['level'] ?></td>
                                         <td>
-                                            <a class="btn btn-success" href="edit-user.php?id=<?php echo $d['nik']; ?>" data-toggle="tooltip" title="Edit" role="button"><i class="fa-solid fa-pen-to-square"></i></a>
+                                            <a class="btn btn-success" href="edit-user.php?id=<?php echo $d['id_user']; ?>" data-toggle="tooltip" title="Edit" role="button"><i class="fa-solid fa-pen-to-square"></i></a>
                                             <a class="btn btn-danger" href="../../../actions/delete-user.php?id=<?php echo $d['nik']; ?>" data-toggle="tooltip" title="Delete" role="button"><i class="fa-solid fa-trash-can"></i></a>
                                         </td>
                                     </tr>
