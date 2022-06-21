@@ -88,6 +88,7 @@ include '../config.php';
 
 	<script type="text/javascript">
 		function onScanSuccess(qrCodeMessage) {
+
 			const nik = qrCodeMessage;
 
 			arrbulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
@@ -126,7 +127,7 @@ include '../config.php';
 						type: 'POST',
 						data: 'nik=' + nik,
 					})
-
+					html5QrcodeScanner.clear();
 
 
 				},
