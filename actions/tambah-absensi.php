@@ -137,9 +137,8 @@ if (isset($_POST['simpan'])) {
                 $uang_makan = $total_hadir * 20000;
                 $uang_transport = $total_hadir * 20000;
                 // $gaji_neto = $gaji + $uang_makan + $uang_transport + - $uang_terlambat;
-                $gaji_neto = $gaji + $uang_makan + $uang_transport + $uang_lembur - $uang_terlambat;
 
-                $sql_penghasilan = "INSERT INTO penghasilan (id_penghasilan, nik, id_absen, tanggal, hadir, tidak_masuk, sakit, terlambat, lembur, gaji_pokok, uang_makan, uang_transport, uang_sakit, uang_tidak_masuk, uang_lembur, uang_terlambat, gaji_neto) VALUE ('$id2', '$nik', '$id', '$tanggal', '$total_hadir', '', '','$total_terlambat','$total_lembur','$gaji','$uang_makan','$uang_transport','', '','$uang_lembur', '$uang_terlambat','$gaji_neto')";
+                $sql_penghasilan = "INSERT INTO penghasilan (id_penghasilan, nik, id_absen, tanggal, hadir, tidak_masuk, sakit, terlambat, lembur,  uang_makan, uang_transport, uang_sakit, uang_tidak_masuk, uang_lembur, uang_terlambat) VALUE ('$id2', '$nik', '$id', '$tanggal', '$total_hadir', '', '','$total_terlambat','$total_lembur','$uang_makan','$uang_transport','', '','$uang_lembur', '$uang_terlambat')";
                 $query_penghasilan = mysqli_query($conn, $sql_penghasilan);
             } else if ($shift == 'Shift 2') {
                 // cek jam Masuk
@@ -173,18 +172,16 @@ if (isset($_POST['simpan'])) {
                 $uang_makan = $total_hadir * 20000;
                 $uang_transport = $total_hadir * 20000;
                 // $gaji_neto = $gaji + $uang_makan + $uang_transport + - $uang_terlambat;
-                $gaji_neto = $gaji + $uang_makan + $uang_transport + $uang_lembur - $uang_terlambat;
 
-                $sql_penghasilan = "INSERT INTO penghasilan (id_penghasilan, nik, id_absen, tanggal, hadir, tidak_masuk, sakit, terlambat, lembur, gaji_pokok, uang_makan, uang_transport, uang_sakit, uang_tidak_masuk, uang_lembur, uang_terlambat, gaji_neto) VALUE ('$id2', '$nik', '$id','$tanggal', '$total_hadir', '', '','$total_terlambat','$total_lembur','$gaji','$uang_makan','$uang_transport','', '','$uang_lembur', '$uang_terlambat','$gaji_neto')";
+                $sql_penghasilan = "INSERT INTO penghasilan (id_penghasilan, nik, id_absen, tanggal, hadir, tidak_masuk, sakit, terlambat, lembur, uang_makan, uang_transport, uang_sakit, uang_tidak_masuk, uang_lembur, uang_terlambat) VALUE ('$id2', '$nik', '$id','$tanggal', '$total_hadir', '', '','$total_terlambat','$total_lembur','$uang_makan','$uang_transport','', '','$uang_lembur', '$uang_terlambat')";
                 $query_penghasilan = mysqli_query($conn, $sql_penghasilan);
             }
         } else if ($keterangan == 'Tidak Masuk') {
 
             $total_tidak_masuk = 1;
             $uang_tidak_masuk = $total_tidak_masuk * 100000;
-            $gaji_neto = $gaji - $uang_tidak_masuk;
 
-            $sql_penghasilan = "INSERT INTO penghasilan (id_penghasilan, nik, id_absen, tanggal, hadir, tidak_masuk, sakit, terlambat, lembur, gaji_pokok, uang_makan, uang_transport, uang_sakit, uang_tidak_masuk, uang_lembur, uang_terlambat, gaji_neto) VALUE ('$id2', '$nik', '$id', '$tanggal', '', '$total_tidak_masuk', '','','','$gaji','','','', '$uang_tidak_masuk','', '','$gaji_neto')";
+            $sql_penghasilan = "INSERT INTO penghasilan (id_penghasilan, nik, id_absen, tanggal, hadir, tidak_masuk, sakit, terlambat, lembur, uang_makan, uang_transport, uang_sakit, uang_tidak_masuk, uang_lembur, uang_terlambat) VALUE ('$id2', '$nik', '$id', '$tanggal', '', '$total_tidak_masuk', '','','','','','', '$uang_tidak_masuk','', '')";
             $query_penghasilan = mysqli_query($conn, $sql_penghasilan);
         } else if ($keterangan == 'Sakit') {
             echo 'adada' . '<br>';
@@ -193,7 +190,7 @@ if (isset($_POST['simpan'])) {
             $uang_sakit = $total_sakit * 75000;
             $gaji_neto = $gaji - $uang_sakit;
 
-            $sql_penghasilan = "INSERT INTO penghasilan (id_penghasilan, nik, id_absen, tanggal, hadir, tidak_masuk, sakit, terlambat, lembur, gaji_pokok, uang_makan, uang_transport, uang_sakit, uang_tidak_masuk, uang_lembur, uang_terlambat, gaji_neto) VALUE ('$id2', '$nik', '$id','$tanggal', '', '', '$total_sakit','','','$gaji','','','$uang_sakit', '','','','$gaji_neto')";
+            $sql_penghasilan = "INSERT INTO penghasilan (id_penghasilan, nik, id_absen, tanggal, hadir, tidak_masuk, sakit, terlambat, lembur, uang_makan, uang_transport, uang_sakit, uang_tidak_masuk, uang_lembur, uang_terlambat, gaji_neto) VALUE ('$id2', '$nik', '$id','$tanggal', '', '', '$total_sakit','','','','','$uang_sakit', '','','')";
             $query_penghasilan = mysqli_query($conn, $sql_penghasilan);
         }
 

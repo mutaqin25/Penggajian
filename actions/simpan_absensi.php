@@ -86,8 +86,7 @@ if ($shift == 'Shift 1') {
 
             $jam_terlambat = 0;
             $uang_terlambat = $jam_terlambat * 10000;
-            $uang_neto = $gaji - $uang_terlambat;
-            $sql_penghasilan = "INSERT INTO penghasilan (id_penghasilan, nik, id_absen, tanggal,  hadir, tidak_masuk, sakit, terlambat, lembur, gaji_pokok, uang_makan, uang_transport, uang_sakit, uang_tidak_masuk, uang_lembur, uang_terlambat, gaji_neto) VALUE ('$id2', '$nik', '$id', '$tanggal', '', '', '','$jam_terlambat','','$gaji','','','', '','', '$uang_terlambat','$gaji_neto')";
+            $sql_penghasilan = "INSERT INTO penghasilan (id_penghasilan, nik, id_absen, tanggal,  hadir, tidak_masuk, sakit, terlambat, lembur,   uang_makan, uang_transport, uang_sakit, uang_tidak_masuk, uang_lembur, uang_terlambat) VALUE ('$id2', '$nik', '$id', '$tanggal', '', '', '','$jam_terlambat','','','','', '','', '$uang_terlambat')";
             $query_penghasilan = mysqli_query($conn, $sql_penghasilan);
         } else if ($jam > '09:00:00') {
             date_default_timezone_set('Asia/Jakarta');
@@ -98,9 +97,8 @@ if ($shift == 'Shift 1') {
 
             $jam_terlambat = $diff->h;
             $uang_terlambat = $jam_terlambat * 10000;
-            $gaji_neto = $gaji - $uang_terlambat;
 
-            $sql_penghasilan = "INSERT INTO penghasilan (id_penghasilan, nik, id_absen, tanggal,  hadir, tidak_masuk, sakit, terlambat, lembur, gaji_pokok, uang_makan, uang_transport, uang_sakit, uang_tidak_masuk, uang_lembur, uang_terlambat, gaji_neto) VALUE ('$id2', '$nik', '$id', '$tanggal', '', '', '','$jam_terlambat','','$gaji','','','', '','', '$uang_terlambat','$gaji_neto')";
+            $sql_penghasilan = "INSERT INTO penghasilan (id_penghasilan, nik, id_absen, tanggal,  hadir, tidak_masuk, sakit, terlambat, lembur,  uang_makan, uang_transport, uang_sakit, uang_tidak_masuk, uang_lembur, uang_terlambat) VALUE ('$id2', '$nik', '$id', '$tanggal', '', '', '','$jam_terlambat','','','','', '','', '$uang_terlambat')";
             $query_penghasilan = mysqli_query($conn, $sql_penghasilan);
             echo mysqli_error($conn);
         }
@@ -168,10 +166,9 @@ if ($shift == 'Shift 1') {
             $jml_hadir = $hadir + 1;
             $uang_makan = $jml_hadir * 20000;
             $uang_transport = $jml_hadir * 20000;
-            $gaji_neto = $gaji + $uang_makan + $uang_transport + $uang_lembur - $uang_tidak_masuk - $uang_sakit - $uang_terlambat;
 
 
-            $sql_penghasilan = "Update penghasilan SET  hadir ='$jml_hadir', uang_makan='$uang_makan', uang_transport='$uang_transport', gaji_neto='$gaji_neto' WHERE id_penghasilan = '$id_p' ";
+            $sql_penghasilan = "Update penghasilan SET  hadir ='$jml_hadir', uang_makan='$uang_makan', uang_transport='$uang_transport' WHERE id_penghasilan = '$id_p' ";
             $query_penghasilan = mysqli_query($conn, $sql_penghasilan);
         } else if ($jam > '17:00:00') {
             // cek berapa jam lembur
@@ -210,9 +207,8 @@ if ($shift == 'Shift 1') {
             $uang_transport = $jml_hadir * 20000;
             $total_lembur = $lembur + $jam_lembur;
             $uang_lembur = $total_lembur * ((1 / 173) * $gaji);
-            $gaji_neto = $gaji + $uang_makan + $uang_transport + $uang_lembur - $uang_tidak_masuk - $uang_sakit - $uang_terlambat;
 
-            $sql_penghasilan = "Update penghasilan SET  hadir ='$jml_hadir', lembur='$total_lembur', uang_makan='$uang_makan', uang_transport='$uang_transport', uang_lembur='$uang_lembur', gaji_neto='$gaji_neto' WHERE id_penghasilan = '$id_p' ";
+            $sql_penghasilan = "Update penghasilan SET  hadir ='$jml_hadir', lembur='$total_lembur', uang_makan='$uang_makan', uang_transport='$uang_transport', uang_lembur='$uang_lembur' WHERE id_penghasilan = '$id_p' ";
             $query_penghasilan = mysqli_query($conn, $sql_penghasilan);
         }
 
@@ -246,9 +242,8 @@ if ($shift == 'Shift 1') {
             echo 'adadas';
             $jam_terlambat = 0;
             $uang_terlambat = $jam_terlambat * 10000;
-            $gaji_neto = $gaji - $uang_terlambat;
 
-            $sql_penghasilan = "INSERT INTO penghasilan (id_penghasilan, nik, id_absen, tanggal, hadir, tidak_masuk, sakit, terlambat, lembur, gaji_pokok, uang_makan, uang_transport, uang_sakit, uang_tidak_masuk, uang_lembur, uang_terlambat, gaji_neto) VALUE ('$id2', '$nik', '$id','$tanggal', '', '', '','$jam_terlambat','','$gaji','','','','','', '$uang_terlambat','$gaji_neto')";
+            $sql_penghasilan = "INSERT INTO penghasilan (id_penghasilan, nik, id_absen, tanggal, hadir, tidak_masuk, sakit, terlambat, lembur, uang_makan, uang_transport, uang_sakit, uang_tidak_masuk, uang_lembur, uang_terlambat) VALUE ('$id2', '$nik', '$id','$tanggal', '', '', '','$jam_terlambat','','','','','','', '$uang_terlambat')";
             $query_penghasilan = mysqli_query($conn, $sql_penghasilan);
             echo mysqli_error($conn);
         } else if ($jam > '14:00:00') {
@@ -261,11 +256,10 @@ if ($shift == 'Shift 1') {
 
             $jam_terlambat = $diff->h;
             $uang_terlambat = $jam_terlambat * 10000;
-            $gaji_neto = $gaji - $uang_terlambat;
 
 
 
-            $sql_penghasilan = "INSERT INTO penghasilan (id_penghasilan, nik, id_absen, tanggal, hadir, tidak_masuk, sakit, terlambat, lembur, gaji_pokok, uang_makan, uang_transport, uang_sakit, uang_tidak_masuk, uang_lembur, uang_terlambat, gaji_neto) VALUE ('$id2', '$nik', '$id', '$tanggal', '', '', '','$jam_terlambat','','$gaji','','','','','', '$uang_terlambat','$gaji_neto')";
+            $sql_penghasilan = "INSERT INTO penghasilan (id_penghasilan, nik, id_absen, tanggal, hadir, tidak_masuk, sakit, terlambat, lembur, uang_makan, uang_transport, uang_sakit, uang_tidak_masuk, uang_lembur, uang_terlambat) VALUE ('$id2', '$nik', '$id', '$tanggal', '', '', '','$jam_terlambat','','','','','','', '$uang_terlambat')";
             $query_penghasilan = mysqli_query($conn, $sql_penghasilan);
             echo mysqli_error($conn);
         }
@@ -329,9 +323,8 @@ if ($shift == 'Shift 1') {
             $jml_hadir = $hadir + 1;
             $uang_makan = $jml_hadir * 20000;
             $uang_transport = $jml_hadir * 20000;
-            $gaji_neto = $gaji + $uang_makan + $uang_transport + $uang_lembur - $uang_tidak_masuk - $uang_sakit - $uang_terlambat;
 
-            $sql_penghasilan = "Update penghasilan SET  hadir ='$jml_hadir', uang_makan='$uang_makan', uang_transport='$uang_transport', gaji_neto='$gaji_neto' WHERE id_penghasilan = '$id_p' ";
+            $sql_penghasilan = "Update penghasilan SET  hadir ='$jml_hadir', uang_makan='$uang_makan', uang_transport='$uang_transport' WHERE id_penghasilan = '$id_p' ";
             $query_penghasilan = mysqli_query($conn, $sql_penghasilan);
             echo mysqli_error($conn);
         } else if ($jam > '22:00:00') {
@@ -371,10 +364,9 @@ if ($shift == 'Shift 1') {
             $uang_transport = $jml_hadir * 20000;
             $total_lembur = $lembur + $jam_lembur;
             $uang_lembur = $total_lembur * ((1 / 173) * $gaji);
-            $gaji_neto = $gaji + $uang_makan + $uang_transport + $uang_lembur - $uang_tidak_masuk - $uang_sakit - $uang_terlambat;
 
 
-            $sql_penghasilan = "Update penghasilan SET  hadir ='$jml_hadir', lembur='$total_lembur', uang_makan='$uang_makan', uang_transport='$uang_transport', uang_lembur='$uang_lembur', gaji_neto='$gaji_neto' WHERE id_penghasilan = '$id_p' ";
+            $sql_penghasilan = "Update penghasilan SET  hadir ='$jml_hadir', lembur='$total_lembur', uang_makan='$uang_makan', uang_transport='$uang_transport', uang_lembur='$uang_lembur' WHERE id_penghasilan = '$id_p' ";
             $query_penghasilan = mysqli_query($conn, $sql_penghasilan);
             echo mysqli_error($conn);
         }
