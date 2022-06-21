@@ -192,86 +192,32 @@
         <div class="container-fluid">
           <!-- Small boxes (Stat box) -->
           <div class="row">
-            <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box bg-info">
-                <div class="inner">
-                  <?php
-                  $cek_jumlah = mysqli_query($conn, "select count(nik) as nik from karyawan");
-                  $result = mysqli_fetch_array($cek_jumlah);
-                  $total = $result['nik'];
-                  ?>
-                  <h3><?php echo $total ?></h3>
 
-                  <p>Data Karyawan</p>
-                </div>
-                <div class="icon">
-                  <i class="fa-solid fa-users"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
             <!-- ./col -->
-            <div class="col-lg-3 col-6">
-              <!-- small box -->
-              <div class="small-box bg-success">
-                <div class="inner">
-                  <?php
-                  $cek_jumlah = mysqli_query($conn, "select count(id_absen) as id_absen from absen");
-                  $result = mysqli_fetch_array($cek_jumlah);
-                  $total = $result['id_absen'];
-                  ?>
-                  <h3><?php echo $total ?></sup></h3>
-
-                  <p>Data Absen</p>
-                </div>
-                <div class="icon">
-                  <i class="fa-solid fa-calendar-check"></i>
-                </div>
-                <a href="../absensi/form-absensi.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              </div>
-            </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
+            <div class="col-lg-6 col-6">
               <!-- small box -->
               <div class="small-box bg-warning">
                 <div class="inner">
-                  <?php
-                  $cek_jumlah = mysqli_query($conn, "select count(id_gaji) as total from gaji_bulanan");
-                  $result = mysqli_fetch_array($cek_jumlah);
-                  $total = $result['total'];
-                  ?>
-                  <h3><?php echo $total ?></h3>
-
-                  <p>Data Gaji</p>
+                  <img style="width:100% ;" src="../../../assets/images/logo/dinobites.png">
                 </div>
-                <div class="icon">
-                  <i class="fa-solid fa-file-invoice-dollar"></i>
-                </div>
-                <a href="../laporan/form_laporan.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
-            <!-- ./col -->
-            <div class="col-lg-3 col-6">
+
+            <div class="col-lg-6 col-6">
               <!-- small box -->
-              <div class="small-box bg-danger">
+              <div class="small-box bg-primary">
                 <div class="inner">
                   <?php
-                  $cek_jumlah = mysqli_query($conn, "select count(nik) as total from user");
-                  $result = mysqli_fetch_array($cek_jumlah);
-                  $total = $result['total'];
+                  $nik = $_SESSION['nik'];
+                  $data = mysqli_query($conn, "select nama from karyawan where nik = $nik");
+                  $result = mysqli_fetch_array($data);
                   ?>
-                  <h3><?php echo $total ?></h3>
+                  <h2>Selamat Datang <?php echo $result['nama'] ?></h2>
+                </div>
 
-                  <p>Data User</p>
-                </div>
-                <div class="icon">
-                  <i class="fa-solid fa-users"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
-            <!-- ./col -->
+
           </div>
           <!-- /.row (main row) -->
         </div><!-- /.container-fluid -->
