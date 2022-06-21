@@ -11,11 +11,15 @@ if (isset($_POST['simpan'])) {
     $password = $_POST['password'];
     $level = $_POST['level'];
 
-
+    // membuat id
+    $cek_id = mysqli_query($conn, "select max(id_user) as kode from user");
+    $jumlah = mysqli_fetch_array($cek_id);
+    $no = $jumlah['kode'];
+    $id = $no + 1;
 
 
     // menginput data ke database
-    $sql = "INSERT INTO user (nik, nama, jenis_kelamin, username, password, level) VALUE ('$nik', '$nama', '$jenis_kelamin', '$username', '$password', '$level')";
+    $sql = "INSERT INTO user (id_user, nik, nama, jenis_kelamin, username, password, level) VALUE ('$id', '$nik', '$nama', '$jenis_kelamin', '$username', '$password', '$level')";
     $query = mysqli_query($conn, $sql);
 
     if ($query) {

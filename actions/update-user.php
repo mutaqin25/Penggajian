@@ -15,7 +15,7 @@ if (isset($_POST['simpan'])) {
 
 
     // menginput data ke database
-    $sql = "UPDATE user SET nik='$nik', nama='$nama', jenis_kelamin='$jenis_kelamin', username='$username', password='$password', level='$level'  WHERE nik='$id'";
+    $sql = "UPDATE user SET nik='$nik', nama='$nama', jenis_kelamin='$jenis_kelamin', username='$username', password='$password', level='$level'  WHERE id_user='$id'";
     $query = mysqli_query($conn, $sql);
     // echo mysqli_error($conn);
     if ($query) {
