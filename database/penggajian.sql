@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2022 at 10:39 AM
+-- Generation Time: Jun 21, 2022 at 11:42 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -45,10 +45,10 @@ CREATE TABLE `absen` (
 INSERT INTO `absen` (`id_absen`, `nik`, `tanggal`, `jam_masuk`, `ket_masuk`, `jam_keluar`, `ket_keluar`, `keterangan`) VALUES
 (1, 20160910024, '2022-06-15', '18:00:31', 'Terlambat', '14:16:30', 'Pulang Lebih Awal', 'Hadir'),
 (2, 20160910024, '2022-06-16', '07:03:00', 'Tepat Waktu', '14:16:30', 'Pulang Lebih Awal', 'Hadir'),
-(5, 99999999999, '2022-06-21', '13:24:10', 'Terlambat', '13:24:17', 'Pulang Lebih Awal', 'Hadir'),
 (6, 3333333333333, '2022-06-21', '13:25:33', 'Tepat Waktu', '13:25:37', 'Pulang Lebih Awal', 'Hadir'),
 (7, 20160910024, '2022-06-20', '00:00:00', '', '00:00:00', '', 'Sakit'),
-(8, 20160910024, '2022-06-21', '14:17:31', 'Terlambat', '14:18:29', 'Pulang Lebih Awal', 'Hadir');
+(8, 20160910024, '2022-06-21', '14:17:31', 'Terlambat', '14:18:29', 'Pulang Lebih Awal', 'Hadir'),
+(9, 99999999999, '2022-06-21', '16:14:00', 'Terlambat', '16:14:04', 'Pulang Lebih Awal', 'Hadir');
 
 -- --------------------------------------------------------
 
@@ -129,27 +129,25 @@ CREATE TABLE `penghasilan` (
   `sakit` int(30) DEFAULT NULL,
   `terlambat` int(30) DEFAULT NULL,
   `lembur` int(30) DEFAULT NULL,
-  `gaji_pokok` bigint(30) NOT NULL,
   `uang_makan` bigint(30) NOT NULL,
   `uang_transport` bigint(30) NOT NULL,
   `uang_sakit` bigint(30) DEFAULT NULL,
   `uang_tidak_masuk` bigint(30) DEFAULT NULL,
   `uang_lembur` bigint(30) DEFAULT NULL,
-  `uang_terlambat` bigint(30) DEFAULT NULL,
-  `gaji_neto` bigint(30) NOT NULL
+  `uang_terlambat` bigint(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `penghasilan`
 --
 
-INSERT INTO `penghasilan` (`id_penghasilan`, `nik`, `id_absen`, `tanggal`, `hadir`, `tidak_masuk`, `sakit`, `terlambat`, `lembur`, `gaji_pokok`, `uang_makan`, `uang_transport`, `uang_sakit`, `uang_tidak_masuk`, `uang_lembur`, `uang_terlambat`, `gaji_neto`) VALUES
-(1, 20160910024, 1, '2022-06-15', 1, 0, 0, 10, 3, 4000000, 20000, 20000, 0, 0, 69364, 100000, 4009364),
-(2, 20160910024, 2, '2022-06-16', 1, 0, 0, 0, 3, 4000000, 20000, 20000, 0, 0, 69364, 0, 4109364),
-(5, 99999999999, 5, '2022-06-21', 1, 0, 0, 4, 0, 5000000, 20000, 20000, 0, 0, 0, 40000, 5000000),
-(6, 3333333333333, 6, '2022-06-21', 1, 0, 0, 0, 0, 8000000, 20000, 20000, 0, 0, 0, 0, 8040000),
-(7, 20160910024, 7, '2022-06-20', 0, 0, 1, 0, 0, 4000000, 0, 0, 75000, 0, 0, 0, 3925000),
-(8, 20160910024, 8, '2022-06-21', 1, 0, 0, 5, 0, 4000000, 20000, 20000, 0, 0, 0, 50000, 3990000);
+INSERT INTO `penghasilan` (`id_penghasilan`, `nik`, `id_absen`, `tanggal`, `hadir`, `tidak_masuk`, `sakit`, `terlambat`, `lembur`, `uang_makan`, `uang_transport`, `uang_sakit`, `uang_tidak_masuk`, `uang_lembur`, `uang_terlambat`) VALUES
+(1, 20160910024, 1, '2022-06-15', 1, 0, 0, 10, 3, 20000, 20000, 0, 0, 69364, 100000),
+(2, 20160910024, 2, '2022-06-16', 1, 0, 0, 0, 3, 20000, 20000, 0, 0, 69364, 0),
+(6, 3333333333333, 6, '2022-06-21', 1, 0, 0, 0, 0, 20000, 20000, 0, 0, 0, 0),
+(7, 20160910024, 7, '2022-06-20', 0, 0, 1, 0, 0, 0, 0, 75000, 0, 0, 0),
+(8, 20160910024, 8, '2022-06-21', 1, 0, 0, 5, 0, 20000, 20000, 0, 0, 0, 50000),
+(9, 99999999999, 9, '2022-06-21', 1, 0, 0, 7, 0, 20000, 20000, 0, 0, 0, 70000);
 
 -- --------------------------------------------------------
 
