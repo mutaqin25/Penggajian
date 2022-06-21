@@ -144,7 +144,7 @@ $html = '<!DOCTYPE html>
             <td>: ' . $result_karyawan["nama"] . '</td>
         </tr>
         <tr>
-            <td style="width:200px ">Departemen</td>
+            <td style="width:200px ">Pemberi</td>
             <td colspan="2">: Owner</td>
             <td style="width:20px "></td>
             <td style="width:200px ">Jabatan</td>
@@ -248,7 +248,7 @@ $html = '<!DOCTYPE html>
             <td colspan="2">: ' . $periode . '</td>
         </tr>
         <tr>
-            <td style="width:200px ">Departemen</td>
+            <td style="width:200px ">Pemberi</td>
             <td colspan="2">: Owner</td>
         </tr>
         <tr>
