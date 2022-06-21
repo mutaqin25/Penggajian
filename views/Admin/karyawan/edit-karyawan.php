@@ -327,12 +327,46 @@
                                             <div class="col-sm-5">
                                                 <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="jabatan">
                                                     <option selected>Choose...</option>
-                                                    <option value="Pelayan" <?php if ($d['jabatan'] == "Pelayan") {
-                                                                                echo "selected";
-                                                                            } ?>>Pelayan</option>
+                                                    <option selected>Choose...</option>
+                                                    <option value="Supervisor" <?php if ($d['jabatan'] == "Supervisor") {
+                                                                                    echo "selected";
+                                                                                } ?>>Supervisor</option>
+                                                    <option value="Kepala Koki" <?php if ($d['jabatan'] == "Kepala Koki") {
+                                                                                    echo "selected";
+                                                                                } ?>>Kepala Koki</option>
+                                                    <option value="Staff Dapur" <?php if ($d['jabatan'] == "Staff Dapur") {
+                                                                                    echo "selected";
+                                                                                } ?>>Staf Dapur</option>
+                                                    <option value="Kepala Koki" <?php if ($d['jabatan'] == "Kepala Koki") {
+                                                                                    echo "selected";
+                                                                                } ?>>Kepala Koki</option>
+                                                    <option value="Leader Bar" <?php if ($d['jabatan'] == "Leader Bar") {
+                                                                                    echo "selected";
+                                                                                } ?>>Leader Bar</option>
+                                                    <option value="Staff Bar" <?php if ($d['jabatan'] == "Staff Bar") {
+                                                                                    echo "selected";
+                                                                                } ?>>Staff Bar</option>
+                                                    <option value="Leader Pelayan" <?php if ($d['jabatan'] == "Leader Pelayan") {
+                                                                                        echo "selected";
+                                                                                    } ?>>Leader Pelayan</option>
+                                                    <option value="Staff Pelayan" <?php if ($d['jabatan'] == "Staff Pelayan") {
+                                                                                        echo "selected";
+                                                                                    } ?>>Staff Pelayan</option>
                                                     <option value="Kasir" <?php if ($d['jabatan'] == "Kasir") {
                                                                                 echo "selected";
                                                                             } ?>>Kasir</option>
+                                                    <option value="Leader Gudang" <?php if ($d['jabatan'] == "Leader Gudang") {
+                                                                                        echo "selected";
+                                                                                    } ?>>Leader Gudang</option>
+                                                    <option value="Staff Gudang" <?php if ($d['jabatan'] == "Staff Gudang") {
+                                                                                        echo "selected";
+                                                                                    } ?>>Staff Bar</option>
+                                                    <option value="Leader Marketing & Design" <?php if ($d['jabatan'] == "Leader Marketing & Design") {
+                                                                                                    echo "selected";
+                                                                                                } ?>>Leader Marketing & Design</option>
+                                                    <option value="Staff Marketing & Design" <?php if ($d['jabatan'] == "Staff Marketing & Design") {
+                                                                                                    echo "selected";
+                                                                                                } ?>>Staff Marketing & Design</option>
                                                 </select>
                                             </div>
                                         </div>
