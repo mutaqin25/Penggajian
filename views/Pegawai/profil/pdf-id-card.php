@@ -6,7 +6,7 @@ $nik = $_GET['nik'];
 $data = mysqli_query($conn, "select * from karyawan where nik=$nik");
 
 $mpdf = new \Mpdf\Mpdf();
-$mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => [100, 150]]);
+$mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => [100, 170]]);
 $stylesheet = file_get_contents('id_card.css');
 $mpdf->WriteHTML($stylesheet, \Mpdf\HTMLParserMode::HEADER_CSS);
 
@@ -24,16 +24,17 @@ $html = '<!DOCTYPE html>
 		<div class="id-card">
 			<div class="header">
 				<h1>ID CARD</h1>
+				<h3 align="center"><img style="width:100px" src="../../../assets/images/logo/dinobites.png"></h3><br>
 			</div>
 			<div class="photo">';
 // for ($i = 0; $i <= 3; $i++) {
 foreach ($data as $row) {
-	$html .= '<img src="../../../assets/images/profil/' . $row["foto"] . '">
+	$html .= '<img style="width: 80px" src="../../../assets/images/profil/' . $row["foto"] . '">
 	</div>
 			<h2>' . $row["nama"] . '</h2>
 			<h3>' . $row["jabatan"] . '</h3>
 			<div class="qr-code">
-				<img src="../../../assets/images/QRCode/' . $row["qrcode"] . '">
+				<img style="width: 100px" src="../../../assets/images/QRCode/' . $row["qrcode"] . '">
 			</div>
 			<hr>';
 }

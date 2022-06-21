@@ -297,7 +297,7 @@
                             <div class="form-group row">
                                 <label for="" class="col-sm-2 col-form-label">Gaji</label>
                                 <div class="col-sm-4">
-                                    <input type="text" name="gaji" value="<?php echo $d['gaji'] ?>" dissable required class="form-control" placeholder="Gaji">
+                                    <input type="text" disabled name="gaji" value="Rp. <?php echo number_format($d['gaji'], 0, ",", ".") ?>" dissable required class="form-control" placeholder="Gaji">
                                 </div>
                                 <label for="" class="col-sm-2 col-form-label">BPJS</label>
                                 <div class="col-sm-4">
@@ -318,7 +318,7 @@
                             <div class="form-group row">
                                 <div class="col-sm-5">
                                     <a class="btn btn-success" href="edit-profil.php?id=<?php echo $_SESSION['nik'] ?>" role="button" style="width: 24%;">Edit &nbsp;<i class="fa-solid fa-pen-to-square"></i></a>
-                                    <a class="btn btn-primary" role="button" target="_blank" href="pdf-id-card.php?nik=<?php echo $_SESSION['nik'] ?>">PDF</a>
+                                    <a class="btn btn-primary" role="button" target="_blank" href="pdf-id-card.php?nik=<?php echo $_SESSION['nik'] ?>">ID CARD</a>
 
                                 </div>
                             </div>
