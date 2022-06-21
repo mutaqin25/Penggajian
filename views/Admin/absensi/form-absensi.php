@@ -240,12 +240,12 @@
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
-                <div>
+                <!-- <div>
                     <form action="../../../actions/simpan_absensi.php" method="POST">
                         <input type="text" name="nik">
                         <button type="submit" value="simpan">simpan</button>
                     </form>
-                </div>
+                </div> -->
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Data Absensi</h6>
                 </div>
