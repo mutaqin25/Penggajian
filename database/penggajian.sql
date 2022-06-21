@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 19, 2022 at 06:57 PM
+-- Generation Time: Jun 21, 2022 at 10:08 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -43,11 +43,12 @@ CREATE TABLE `absen` (
 --
 
 INSERT INTO `absen` (`id_absen`, `nik`, `tanggal`, `jam_masuk`, `ket_masuk`, `jam_keluar`, `ket_keluar`, `keterangan`) VALUES
-(1, 20160910024, '2022-06-15', '18:00:31', 'Terlambat', '18:00:40', 'Lembur', 'Hadir'),
-(2, 20160910024, '2022-06-16', '07:03:00', 'Tepat Waktu', '18:03:00', 'Lembur', 'Hadir'),
-(3, 20160910024, '2022-06-17', '00:00:00', '', '00:00:00', '', 'Sakit'),
-(4, 20160910024, '2022-06-18', '00:00:00', '', '00:00:00', '', 'Tidak Masuk'),
-(5, 20160910024, '2022-07-15', '00:00:00', '', '00:00:00', '', 'Sakit');
+(1, 20160910024, '2022-06-15', '18:00:31', 'Terlambat', '14:16:30', 'Pulang Lebih Awal', 'Hadir'),
+(2, 20160910024, '2022-06-16', '07:03:00', 'Tepat Waktu', '14:16:30', 'Pulang Lebih Awal', 'Hadir'),
+(5, 99999999999, '2022-06-21', '13:24:10', 'Terlambat', '13:24:17', 'Pulang Lebih Awal', 'Hadir'),
+(6, 3333333333333, '2022-06-21', '13:25:33', 'Tepat Waktu', '13:25:37', 'Pulang Lebih Awal', 'Hadir'),
+(7, 20160910024, '2022-06-20', '00:00:00', '', '00:00:00', '', 'Sakit'),
+(8, 20160910024, '2022-06-21', '14:17:31', 'Terlambat', '14:18:29', 'Pulang Lebih Awal', 'Hadir');
 
 -- --------------------------------------------------------
 
@@ -93,7 +94,9 @@ CREATE TABLE `gaji_bulanan` (
 --
 
 INSERT INTO `gaji_bulanan` (`id_gaji`, `periode`, `nik`, `tanggal`, `gaji_pokok`, `uang_tunjangan`, `uang_lembur`, `uang_potongan`, `bpjs`, `pph21`, `gaji_bersih`) VALUES
-(1, '2022-06', 20160910024, '2022-06-19', 4000000, 80000, 138728, 275000, 181600, 0, 4125328);
+(2, '2022-06', 99999999999, '2022-06-21', 5000000, 40000, 0, 190000, -123000, 6658, 4870343),
+(3, '2022-06', 3333333333333, '2022-06-21', 8000000, 40000, 0, 0, 43200, 140202, 7942998),
+(4, '2022-06', 20160910024, '2022-06-21', 4000000, 120000, 138728, 225000, 181600, 0, 4215328);
 
 -- --------------------------------------------------------
 
@@ -126,7 +129,7 @@ CREATE TABLE `karyawan` (
 
 INSERT INTO `karyawan` (`nik`, `nama`, `jenis_kelamin`, `tgl_lahir`, `alamat`, `status`, `agama`, `no_hp`, `jabatan`, `shift`, `gaji`, `bpjs`, `tgl_masuk`, `pendidikan`, `foto`, `qrcode`) VALUES
 (8634242467, 'Erik', 'Laki-Laki', '2018-05-10', 'adada                                                                                               ', 'Menikah', 'Islam', '0834535324', 'Pelayan', 'Shift 1', 4000000, '', '2022-04-21', 'Kejuruan', '1646752479_javascript_original_logo_icon_146455.png', '8634242467.png'),
-(20160910024, 'Muttaqin', 'Laki-Laki', '1998-10-25', 'Cirebon                                                                                             ', 'Belum Menikah', 'Islam', '084245224233', 'Pelayan', 'Shift 1', 4000000, 'Jaminan Kecelakaan Kerja,Jaminan Kematian,Jaminan Kesehatan', '2022-02-08', 'Sarjana', '1782092867_985969.jpg', '20160910024.png'),
+(20160910024, 'Muttaqin', 'Laki-Laki', '1998-10-25', 'Cirebon                                                                                             ', 'Belum Menikah', 'Islam', '084245224233', 'Staff Pelayan', 'Shift 1', 4000000, 'Jaminan Kecelakaan Kerja,Jaminan Kematian,Jaminan Kesehatan,Jaminan Kecelakaan Kerja,Jaminan Kematia', '2022-02-08', 'Sarjana', '1782092867_985969.jpg', '20160910024.png'),
 (99999999999, 'Andora', 'Laki-Laki', '2022-06-17', 'nnnnn                                            ', 'Belum Menikah', 'Islam', '084245224233', 'Pelayan', 'Shift 1', 5000000, 'Jaminan Kecelakaan Kerja,Jaminan Kematian,Jaminan Hari Tua,Jaminan Pensiun', '2022-06-01', 'Sekolah Menengah Atas', '1170555466_1653512.jpg', '99999999999.png'),
 (3333333333333, 'Erika', 'Perempuan', '1997-08-06', '  adsad                                                                                             ', 'Menikah', 'Hindu', '0824242423', 'Pelayan', 'Shift 2', 8000000, 'Jaminan Kecelakaan Kerja,Jaminan Kematian', '2022-05-10', 'Diploma', '985652032_vue-js-1.png', '3333333333333.png');
 
@@ -163,9 +166,10 @@ CREATE TABLE `penghasilan` (
 INSERT INTO `penghasilan` (`id_penghasilan`, `nik`, `id_absen`, `tanggal`, `hadir`, `tidak_masuk`, `sakit`, `terlambat`, `lembur`, `gaji_pokok`, `uang_makan`, `uang_transport`, `uang_sakit`, `uang_tidak_masuk`, `uang_lembur`, `uang_terlambat`, `gaji_neto`) VALUES
 (1, 20160910024, '1', '2022-06-15', 1, 0, 0, 10, 3, 4000000, 20000, 20000, 0, 0, 69364, 100000, 4009364),
 (2, 20160910024, '2', '2022-06-16', 1, 0, 0, 0, 3, 4000000, 20000, 20000, 0, 0, 69364, 0, 4109364),
-(3, 20160910024, '3', '2022-06-17', 0, 0, 1, 0, 0, 4000000, 0, 0, 75000, 0, 0, 0, 3925000),
-(4, 20160910024, '4', '2022-06-18', 0, 1, 0, 0, 0, 4000000, 0, 0, 0, 100000, 0, 0, 3900000),
-(5, 20160910024, '5', '2022-07-15', 0, 0, 1, 0, 0, 4000000, 0, 0, 75000, 0, 0, 0, 3925000);
+(5, 99999999999, '5', '2022-06-21', 1, 0, 0, 4, 0, 5000000, 20000, 20000, 0, 0, 0, 40000, 5000000),
+(6, 3333333333333, '6', '2022-06-21', 1, 0, 0, 0, 0, 8000000, 20000, 20000, 0, 0, 0, 0, 8040000),
+(7, 20160910024, '7', '2022-06-20', 0, 0, 1, 0, 0, 4000000, 0, 0, 75000, 0, 0, 0, 3925000),
+(8, 20160910024, '8', '2022-06-21', 1, 0, 0, 5, 0, 4000000, 20000, 20000, 0, 0, 0, 50000, 3990000);
 
 -- --------------------------------------------------------
 
@@ -174,6 +178,7 @@ INSERT INTO `penghasilan` (`id_penghasilan`, `nik`, `id_absen`, `tanggal`, `hadi
 --
 
 CREATE TABLE `user` (
+  `id_user` bigint(15) NOT NULL,
   `nik` bigint(30) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `jenis_kelamin` varchar(50) NOT NULL,
@@ -186,10 +191,10 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`nik`, `nama`, `jenis_kelamin`, `username`, `password`, `level`) VALUES
-(1, 'Muttaqin', 'Laki-Laki', 'mutaqin', 'mutaqin25', 'Admin'),
-(2, 'Erik', 'Laki-Laki', 'erik', 'erik123', 'Admin'),
-(20160910024, 'Muttaqin', 'Laki-Laki', 'zaenul', 'zaenul123', 'Pegawai');
+INSERT INTO `user` (`id_user`, `nik`, `nama`, `jenis_kelamin`, `username`, `password`, `level`) VALUES
+(1, 123456789, 'Muhammad', 'Laki-Laki', 'mutaqin', 'mutaqin25', 'Admin'),
+(2, 2642424, 'Erik', 'Laki-Laki', 'erik', 'erik123', 'Admin'),
+(3, 20160910024, 'Muttaqin', 'Laki-Laki', 'zaenul', 'zaenul123', 'Pegawai');
 
 --
 -- Indexes for dumped tables
@@ -231,7 +236,8 @@ ALTER TABLE `penghasilan`
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`nik`);
+  ADD PRIMARY KEY (`id_user`),
+  ADD UNIQUE KEY `nik` (`nik`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
