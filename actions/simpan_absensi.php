@@ -11,7 +11,7 @@ $strTgl = '2022-06-09';
 // $my_date = strtotime($tanggal);
 date_default_timezone_set('Asia/Jakarta');
 $jam = date('G:i:s');
-echo $jam;
+// echo $jam;
 
 // ----------------------------------- absen -----------------------------------  // 
 
@@ -21,10 +21,11 @@ $jumlah = mysqli_fetch_array($cek_id);
 $no = $jumlah['kode'];
 $id = $no + 1;
 
-// // cek absen
-// $cek_id_absen = mysqli_query($conn, "select mx(id_absen) as id_absen from penghasilan where nik = $nik");
-// $data_id_absen = mysqli_fetch_array($cek_id_absen);
-// $id_absen = $data_id_absen['id_absen'];
+// cek absen
+$cek_id_absen = mysqli_query($conn, "select max(id_absen) as id_absen from penghasilan where nik = $nik");
+$data_id_absen = mysqli_fetch_array($cek_id_absen);
+$id_absen = $data_id_absen['id_absen'];
+echo $id_absen;
 
 // cek shift
 $cek_shift = mysqli_query($conn, "select shift as shift from karyawan where nik = $nik");
@@ -32,7 +33,7 @@ $data_shift = mysqli_fetch_array($cek_shift);
 $shift = $data_shift['shift'];
 
 // cek tanggal now
-$cek_tgl_now = mysqli_query($conn, "select max(tanggal) as tanggal from absen where nik = $nik ");
+$cek_tgl_now = mysqli_query($conn, "select max(tanggal) as tanggal from absen where id_absen = $id_absen ");
 $data_tgl_now = mysqli_fetch_array($cek_tgl_now);
 $tgl_now = $data_tgl_now['tanggal'];
 
@@ -72,6 +73,7 @@ $id_p = $data_id_p['id'];
 
 if ($shift == 'Shift 1') {
     if ($tanggal != $tgl_now) {
+        echo $tanggal . '<br>' . $tgl_now;
         if ($jam <= '09:00:00') {
             $jam_masuk = $jam;
             $ket_masuk = "Tepat Waktu";
@@ -119,6 +121,7 @@ if ($shift == 'Shift 1') {
             echo mysqli_error($conn);
         }
     } else if ($tanggal == $tgl_now) {
+        echo $tanggal . '<br>' . $tgl_now;
         if ($jam < '17:00:00') {
             $jam_keluar = $jam;
             $ket_keluar = "Pulang Lebih Awal";
@@ -213,7 +216,7 @@ if ($shift == 'Shift 1') {
             $query_penghasilan = mysqli_query($conn, $sql_penghasilan);
         }
 
-        $sql = "UPDATE absen SET jam_keluar='$jam_keluar', ket_keluar='$ket_keluar', keterangan = '$keterangan' WHERE nik='$nik'";
+        $sql = "UPDATE absen SET jam_keluar='$jam_keluar', ket_keluar='$ket_keluar', keterangan = '$keterangan' WHERE id_absen='$id_absen'";
         $query = mysqli_query($conn, $sql);
         if ($query) {
             // kalau berhasil alihkan ke halaman index.php dengan status=sukses
@@ -377,7 +380,7 @@ if ($shift == 'Shift 1') {
         }
 
 
-        $sql = "UPDATE absen SET jam_keluar='$jam_keluar', ket_keluar='$ket_keluar', keterangan = '$keterangan' WHERE nik='$nik'";
+        $sql = "UPDATE absen SET jam_keluar='$jam_keluar', ket_keluar='$ket_keluar', keterangan = '$keterangan' WHERE id_absen='$id_absen'";
         $query = mysqli_query($conn, $sql);
         if ($query) {
             // kalau berhasil alihkan ke halaman index.php dengan status=sukses
