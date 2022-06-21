@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2022 at 10:08 AM
+-- Generation Time: Jun 21, 2022 at 10:39 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -53,25 +53,6 @@ INSERT INTO `absen` (`id_absen`, `nik`, `tanggal`, `jam_masuk`, `ket_masuk`, `ja
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bpjs`
---
-
-CREATE TABLE `bpjs` (
-  `id_bpjs` int(15) NOT NULL,
-  `nama` varchar(50) NOT NULL,
-  `nilai` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `bpjs`
---
-
-INSERT INTO `bpjs` (`id_bpjs`, `nama`, `nilai`) VALUES
-(1, 'Jaminan Kesehatan', 0.05);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `gaji_bulanan`
 --
 
@@ -94,7 +75,6 @@ CREATE TABLE `gaji_bulanan` (
 --
 
 INSERT INTO `gaji_bulanan` (`id_gaji`, `periode`, `nik`, `tanggal`, `gaji_pokok`, `uang_tunjangan`, `uang_lembur`, `uang_potongan`, `bpjs`, `pph21`, `gaji_bersih`) VALUES
-(2, '2022-06', 99999999999, '2022-06-21', 5000000, 40000, 0, 190000, -123000, 6658, 4870343),
 (3, '2022-06', 3333333333333, '2022-06-21', 8000000, 40000, 0, 0, 43200, 140202, 7942998),
 (4, '2022-06', 20160910024, '2022-06-21', 4000000, 120000, 138728, 225000, 181600, 0, 4215328);
 
@@ -142,7 +122,7 @@ INSERT INTO `karyawan` (`nik`, `nama`, `jenis_kelamin`, `tgl_lahir`, `alamat`, `
 CREATE TABLE `penghasilan` (
   `id_penghasilan` int(15) NOT NULL,
   `nik` bigint(30) NOT NULL,
-  `id_absen` varchar(30) NOT NULL,
+  `id_absen` bigint(30) NOT NULL,
   `tanggal` date DEFAULT NULL,
   `hadir` int(30) NOT NULL,
   `tidak_masuk` int(30) DEFAULT NULL,
@@ -164,12 +144,12 @@ CREATE TABLE `penghasilan` (
 --
 
 INSERT INTO `penghasilan` (`id_penghasilan`, `nik`, `id_absen`, `tanggal`, `hadir`, `tidak_masuk`, `sakit`, `terlambat`, `lembur`, `gaji_pokok`, `uang_makan`, `uang_transport`, `uang_sakit`, `uang_tidak_masuk`, `uang_lembur`, `uang_terlambat`, `gaji_neto`) VALUES
-(1, 20160910024, '1', '2022-06-15', 1, 0, 0, 10, 3, 4000000, 20000, 20000, 0, 0, 69364, 100000, 4009364),
-(2, 20160910024, '2', '2022-06-16', 1, 0, 0, 0, 3, 4000000, 20000, 20000, 0, 0, 69364, 0, 4109364),
-(5, 99999999999, '5', '2022-06-21', 1, 0, 0, 4, 0, 5000000, 20000, 20000, 0, 0, 0, 40000, 5000000),
-(6, 3333333333333, '6', '2022-06-21', 1, 0, 0, 0, 0, 8000000, 20000, 20000, 0, 0, 0, 0, 8040000),
-(7, 20160910024, '7', '2022-06-20', 0, 0, 1, 0, 0, 4000000, 0, 0, 75000, 0, 0, 0, 3925000),
-(8, 20160910024, '8', '2022-06-21', 1, 0, 0, 5, 0, 4000000, 20000, 20000, 0, 0, 0, 50000, 3990000);
+(1, 20160910024, 1, '2022-06-15', 1, 0, 0, 10, 3, 4000000, 20000, 20000, 0, 0, 69364, 100000, 4009364),
+(2, 20160910024, 2, '2022-06-16', 1, 0, 0, 0, 3, 4000000, 20000, 20000, 0, 0, 69364, 0, 4109364),
+(5, 99999999999, 5, '2022-06-21', 1, 0, 0, 4, 0, 5000000, 20000, 20000, 0, 0, 0, 40000, 5000000),
+(6, 3333333333333, 6, '2022-06-21', 1, 0, 0, 0, 0, 8000000, 20000, 20000, 0, 0, 0, 0, 8040000),
+(7, 20160910024, 7, '2022-06-20', 0, 0, 1, 0, 0, 4000000, 0, 0, 75000, 0, 0, 0, 3925000),
+(8, 20160910024, 8, '2022-06-21', 1, 0, 0, 5, 0, 4000000, 20000, 20000, 0, 0, 0, 50000, 3990000);
 
 -- --------------------------------------------------------
 
@@ -192,9 +172,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `nik`, `nama`, `jenis_kelamin`, `username`, `password`, `level`) VALUES
-(1, 123456789, 'Muhammad', 'Laki-Laki', 'mutaqin', 'mutaqin25', 'Admin'),
-(2, 2642424, 'Erik', 'Laki-Laki', 'erik', 'erik123', 'Admin'),
-(3, 20160910024, 'Muttaqin', 'Laki-Laki', 'zaenul', 'zaenul123', 'Pegawai');
+(3, 20160910024, 'Muttaqin', 'Laki-Laki', 'zaenul', 'zaenul123', 'Pegawai'),
+(4, 123456789, 'Admin', 'Laki-Laki', 'admin', 'admin', 'Admin');
 
 --
 -- Indexes for dumped tables
@@ -206,12 +185,6 @@ INSERT INTO `user` (`id_user`, `nik`, `nama`, `jenis_kelamin`, `username`, `pass
 ALTER TABLE `absen`
   ADD PRIMARY KEY (`id_absen`),
   ADD KEY `nik` (`nik`);
-
---
--- Indexes for table `bpjs`
---
-ALTER TABLE `bpjs`
-  ADD PRIMARY KEY (`id_bpjs`);
 
 --
 -- Indexes for table `gaji_bulanan`
@@ -230,14 +203,15 @@ ALTER TABLE `karyawan`
 -- Indexes for table `penghasilan`
 --
 ALTER TABLE `penghasilan`
-  ADD PRIMARY KEY (`id_penghasilan`);
+  ADD PRIMARY KEY (`id_penghasilan`),
+  ADD KEY `nik` (`nik`),
+  ADD KEY `id_absen` (`id_absen`);
 
 --
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`id_user`),
-  ADD UNIQUE KEY `nik` (`nik`);
+  ADD PRIMARY KEY (`id_user`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
