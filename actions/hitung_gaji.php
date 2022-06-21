@@ -113,6 +113,7 @@ if (isset($_POST['hitung'])) {
 
         // ---------------------------- Potongan ---------------------------- //
         $bpjs_jht = $jht * $gaji;
+        echo 'asda <br>' . $bpjs_jht;
         $bpjs_jp = $jp * $gaji;
         $potongan = $uang_sakit + $uang_tidak_masuk + $uang_terlambat + $bpjs_jht + $bpjs_jp;
         echo '<br>' . $potongan . '=' . $uang_sakit . '+' . $uang_tidak_masuk . '+' . $uang_terlambat . '+' . $bpjs_jht . '+' . $bpjs_jp;
@@ -120,8 +121,8 @@ if (isset($_POST['hitung'])) {
 
         // ---------------------------- gaji neto ---------------------------- //
         $bpjs = $bpjs_jk + $bpjs_jkm + $bpjs_jkk - $bpjs_jht - $bpjs_jp;
-        $gaji_neto =  $gaji + $pendapatan - $potongan;
         echo '<br> bpjs ' . $bpjs . '=' . $bpjs_jk . '+' . $bpjs_jkm . '+' . $bpjs_jkk . '-' . $bpjs_jht . '-' . $bpjs_jp;
+        $gaji_neto =  $gaji + $pendapatan - $potongan;
 
         echo '<br> gaji_neto = ' . $gaji_neto;
         // ---------------------------- gaji neto ---------------------------- //
