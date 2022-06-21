@@ -192,32 +192,32 @@
         <div class="container-fluid">
           <!-- Small boxes (Stat box) -->
           <div class="row">
-
-            <!-- ./col -->
-            <div class="col-lg-6 col-6">
+            <div class="col-lg-12 col-6">
               <!-- small box -->
-              <div class="small-box bg-warning">
-                <div class="inner">
-                  <img style="width:100% ;" src="../../../assets/images/logo/dinobites.png">
-                </div>
-              </div>
-            </div>
-
-            <div class="col-lg-6 col-6">
-              <!-- small box -->
-              <div class="small-box bg-primary">
+              <div class="small-box">
                 <div class="inner">
                   <?php
                   $nik = $_SESSION['nik'];
                   $data = mysqli_query($conn, "select nama from karyawan where nik = $nik");
                   $result = mysqli_fetch_array($data);
                   ?>
-                  <h2>Selamat Datang <?php echo $result['nama'] ?></h2>
+                  <h2 style="text-align:center ;">Selamat Datang <?php echo $result['nama'] ?></h2>
                 </div>
 
               </div>
             </div>
 
+          </div>
+          <div class="row">
+            <!-- ./col -->
+            <div class="col-lg-12 col-6" style="align-items:center ;">
+              <!-- small box -->
+              <div class="small-box " style="align-content:center ;">
+                <div class="inner" style="text-align:center ;">
+                  <img style="width:70% ;" src="../../../assets/images/logo/dinobites.png">
+                </div>
+              </div>
+            </div>
           </div>
           <!-- /.row (main row) -->
         </div><!-- /.container-fluid -->
