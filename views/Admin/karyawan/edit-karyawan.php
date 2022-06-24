@@ -337,9 +337,6 @@
                                                     <option value="Staff Dapur" <?php if ($d['jabatan'] == "Staff Dapur") {
                                                                                     echo "selected";
                                                                                 } ?>>Staf Dapur</option>
-                                                    <option value="Kepala Koki" <?php if ($d['jabatan'] == "Kepala Koki") {
-                                                                                    echo "selected";
-                                                                                } ?>>Kepala Koki</option>
                                                     <option value="Leader Bar" <?php if ($d['jabatan'] == "Leader Bar") {
                                                                                     echo "selected";
                                                                                 } ?>>Leader Bar</option>

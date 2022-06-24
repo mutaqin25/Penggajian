@@ -434,8 +434,7 @@
 
     <!-- alert fade Out-->
     <?php
-    $status = $_SESSION['status'];
-    if ($status == "sukses") {
+    if (isset($_SESSION['status']) == "sukses") {
     ?>
         <script>
             document.getElementById('message-success').innerHTML = "<?= $_SESSION['message']; ?>";
@@ -448,7 +447,7 @@
     <?php
         unset($_SESSION['status']);
         unset($_SESSION['message']);
-    } else if ($status == "gagal") {
+    } else if (isset($_SESSION['status']) == "gagal") {
     ?>
         <script>
             document.getElementById('message-warning').innerHTML = "<?= $_SESSION['message']; ?>";

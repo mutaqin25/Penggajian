@@ -126,7 +126,7 @@ if ($shift == 'Shift 1') {
             $keterangan = 'Hadir';
         } else if ($jam == '17:00:00') {
             $jam_keluar = $jam;
-            $ket_keluar = "Pulang";
+            $ket_keluar = "Tepat Waktu";
             $keterangan = 'Hadir';
         } else if ($jam > '17:00:00') {
             $jam_keluar = $jam;

@@ -304,17 +304,17 @@
                                                 <option value="Supervisor">Supervisor</option>
                                                 <option value="Kepala Koki">Kepala Koki</option>
                                                 <option value="Staff Dapur">Staf Dapur</option>
-                                                <option value="Kepala Koki">Kepala Koki</option>
                                                 <option value="Leader Bar">Leader Bar</option>
                                                 <option value="Staff Bar">Staff Bar</option>
                                                 <option value="Leader Pelayan">Leader Pelayan</option>
                                                 <option value="Staff Pelayan">Staff Pelayan</option>
                                                 <option value="Kasir">Kasir</option>
                                                 <option value="Leader Gudang">Leader Gudang</option>
-                                                <option value="Staff Gudang">Staff Bar</option>
+                                                <option value="Staff Gudang">Staff Gudang</option>
                                                 <option value="Leader Marketing & Design">Leader Marketing & Design</option>
                                                 <option value="Staff Marketing & Design">Staff Marketing & Design</option>
                                             </select>
+                                            
                                         </div>
                                     </div>
                                     <div class="form-group row">
