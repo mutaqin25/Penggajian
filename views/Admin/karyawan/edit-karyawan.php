@@ -357,7 +357,7 @@
                                                                                     } ?>>Leader Gudang</option>
                                                     <option value="Staff Gudang" <?php if ($d['jabatan'] == "Staff Gudang") {
                                                                                         echo "selected";
-                                                                                    } ?>>Staff Bar</option>
+                                                                                    } ?>>Staff Gudang</option>
                                                     <option value="Leader Marketing & Design" <?php if ($d['jabatan'] == "Leader Marketing & Design") {
                                                                                                     echo "selected";
                                                                                                 } ?>>Leader Marketing & Design</option>
