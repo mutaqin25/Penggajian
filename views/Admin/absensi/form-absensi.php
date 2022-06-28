@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title> Form Absensi </title>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
@@ -246,11 +246,45 @@
                         <button type="submit" value="simpan">simpan</button>
                     </form>
                 </div> -->
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label for="" class="col-sm-1 col-form-label">Bulan</label>
+                        <div class="col-sm-3">
+                            <select name='bulan' id='bulan' class='form-control'>
+                                <option>Bulan</option>
+                                <option value='01'>Januari</option>
+                                <option value='02'>Februari</option>
+                                <option value='03'>Maret</option>
+                                <option value='04'>April</option>
+                                <option value='05'>Mei</option>
+                                <option value='06'>Juni</option>
+                                <option value='07'>Juli</option>
+                                <option value='08'>Agustus</option>
+                                <option value='09'>September</option>
+                                <option value='10'>Oktober</option>
+                                <option value='11'>November</option>
+                                <option value='12'>Desember</option>
+                            </select>
+                        </div>
+                        <label for="" class="col-sm-1 col-form-label">Tahun</label>
+                        <div class="col-sm-3">
+                            <select name='tahun' id="tahun" class='form-control'>
+                                <option selected=”selected”>Tahun</option>
+                                <?php
+                                for ($i = date('Y'); $i >= date('Y') - 32; $i -= 1) {
+                                    echo "<option value='$i'> $i </option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary search" id="search" name="search" value="search">Search</button>
+                    </div>
+                </div>
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Data Absensi</h6>
                 </div>
-                <div class="card-body">
-                    <div class="table-responsive">
+                <div class="card-body data">
+                    <!-- <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" align="center">
                             <thead>
                                 <tr>
@@ -305,7 +339,7 @@
                                 ?>
                             </tbody>
                         </table>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
@@ -429,7 +463,28 @@
     <script>
         $(function() {
             $('[data-toggle="tooltip"]').tooltip()
-        })
+        });
+
+        $(document).ready(function() {
+            console.log('aaa');
+            $('.data').load("../../../actions/absen.php");
+            $(".search").click(function() {
+                console.log('bbb');
+                var bulan = $("#bulan").val();
+                var tahun = $("#tahun").val();
+                $.ajax({
+                    type: 'POST',
+                    url: "../../../actions/absen.php",
+                    data: {
+                        bulan: bulan,
+                        tahun: tahun
+                    },
+                    success: function(hasil) {
+                        $('.data').html(hasil);
+                    },
+                });
+            });
+        });
     </script>
 
     <!-- alert fade Out-->
@@ -463,7 +518,9 @@
     }
     ?>
 
+
     <!-- jQuery -->
+    <!-- <script src="../../../assets/Admin/plugins/jquery/jquery.js"></script> -->
     <script src="../../../assets/Admin/plugins/jquery/jquery.min.js"></script>
     <!-- jQuery UI 1.11.4 -->
     <script src="../../../assets/Admin/plugins/jquery-ui/jquery-ui.min.js"></script>
