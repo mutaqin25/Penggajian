@@ -87,6 +87,9 @@ include '../config.php';
 
 
 	<script type="text/javascript">
+
+		var audio = new Audio('sound/definite-555.mp3');
+
 		function onScanSuccess(qrCodeMessage) {
 
 			const nik = qrCodeMessage;
@@ -121,13 +124,14 @@ include '../config.php';
 						type: "success",
 						timer: 3000
 					});
+					audio.play();
 
 					$.ajax({
 						url: '../actions/simpan_absensi.php',
 						type: 'POST',
 						data: 'nik=' + nik,
 					})
-					html5QrcodeScanner.clear();
+					// html5QrcodeScanner.clear();
 
 
 				},
