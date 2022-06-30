@@ -288,7 +288,7 @@
 
                 </div>
             </div>
-            <form action="pdf-slip-gaji.php" method="POST">
+            <form action="../../../actions/hitung_gaji.php" method="POST">
                 <div class="card-body">
                     <div class="form-group row">
                         <?php
@@ -326,7 +326,7 @@
                                 ?>
                             </select>
                         </div>
-                        <button class="btn btn-primary" role="button" target="_blank">Slip Gaji &nbsp; <i class="fa-solid fa-print"></i> </button>
+                        <button type="submit" class="btn btn-primary" id="hitung" name="hitung" value="hitung">Hitung</button>
                     </div>
                 </div>
             </form>
@@ -394,53 +394,53 @@
                     </div>
                 </div>
             </div>
+            <form action="pdf-slip-gaji.php" method="POST">
+                <div class="card-body">
+                    <div class="form-group row">
+                        <?php
+                        $id = $_GET['id'];
+                        // echo $id;
+                        ?>
+                        <input type="number" hidden readonly name="nik" required class="form-control" placeholder="Nik" value="<?php echo $id ?>">
 
+                        <label for="" class="col-sm-1 col-form-label">Bulan</label>
+                        <div class="col-sm-3">
+                            <select name='bulan' id='bulan' class='form-control'>
+                                <option>Bulan</option>
+                                <option value='01'>Januari</option>
+                                <option value='02'>Februari</option>
+                                <option value='03'>Maret</option>
+                                <option value='04'>April</option>
+                                <option value='05'>Mei</option>
+                                <option value='06'>Juni</option>
+                                <option value='07'>Juli</option>
+                                <option value='08'>Agustus</option>
+                                <option value='09'>September</option>
+                                <option value='10'>Oktober</option>
+                                <option value='11'>November</option>
+                                <option value='12'>Desember</option>
+                            </select>
+                        </div>
+                        <label for="" class="col-sm-1 col-form-label">Tahun</label>
+                        <div class="col-sm-3">
+                            <select name='tahun' class='form-control'>
+                                <option selected=”selected”>Tahun</option>
+                                <?php
+                                for ($i = date('Y'); $i >= date('Y') - 32; $i -= 1) {
+                                    echo "<option value='$i'> $i </option>";
+                                }
+                                ?>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary" role="button" target="_blank">Slip Gaji &nbsp; <i class="fa-solid fa-print"></i> </button>
+                    </div>
+                </div>
+            </form>
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Data Penggajian Perbulan</h6>
                 </div>
-                <form action="../../../actions/hitung_gaji.php" method="POST">
-                    <div class="card-body">
-                        <div class="form-group row">
-                            <?php
-                            $id = $_GET['id'];
-                            // echo $id;
-                            ?>
-                            <input type="number" hidden readonly name="nik" required class="form-control" placeholder="Nik" value="<?php echo $id ?>">
 
-                            <label for="" class="col-sm-1 col-form-label">Bulan</label>
-                            <div class="col-sm-3">
-                                <select name='bulan' id='bulan' class='form-control'>
-                                    <option>Bulan</option>
-                                    <option value='01'>Januari</option>
-                                    <option value='02'>Februari</option>
-                                    <option value='03'>Maret</option>
-                                    <option value='04'>April</option>
-                                    <option value='05'>Mei</option>
-                                    <option value='06'>Juni</option>
-                                    <option value='07'>Juli</option>
-                                    <option value='08'>Agustus</option>
-                                    <option value='09'>September</option>
-                                    <option value='10'>Oktober</option>
-                                    <option value='11'>November</option>
-                                    <option value='12'>Desember</option>
-                                </select>
-                            </div>
-                            <label for="" class="col-sm-1 col-form-label">Tahun</label>
-                            <div class="col-sm-3">
-                                <select name='tahun' class='form-control'>
-                                    <option selected=”selected”>Tahun</option>
-                                    <?php
-                                    for ($i = date('Y'); $i >= date('Y') - 32; $i -= 1) {
-                                        echo "<option value='$i'> $i </option>";
-                                    }
-                                    ?>
-                                </select>
-                            </div>
-                            <button type="submit" class="btn btn-primary" id="hitung" name="hitung" value="hitung">Hitung</button>
-                        </div>
-                    </div>
-                </form>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" align="center">
