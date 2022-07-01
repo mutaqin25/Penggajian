@@ -1,13 +1,13 @@
-p<?php
-    include '../../../config.php';
-    require_once __DIR__ . '/../../../assets/vendor/autoload.php';
+<?php
+include '../../../config.php';
+require_once __DIR__ . '/../../../assets/vendor/autoload.php';
 
-    $data = mysqli_query($conn, "select * from absen ");
+$data = mysqli_query($conn, "select * from absen ");
 
-    $mpdf = new \Mpdf\Mpdf();
-    $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-L']);
+$mpdf = new \Mpdf\Mpdf();
+$mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-L']);
 
-    $html = '<!DOCTYPE html>
+$html = '<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -32,9 +32,9 @@ p<?php
                                         </tr>
                                     </thead>
                                     <tbody>';
-    $i = 1;
-    foreach ($data as $row) {
-        $html .= '<tr>
+$i = 1;
+foreach ($data as $row) {
+    $html .= '<tr>
             <td>' . $i++ . '</td>
             <td>' . $row["nik"] . '</td>
             <td>' . $row["tanggal"] . '</td>
@@ -44,11 +44,11 @@ p<?php
             <td>' . $row["ket_keluar"] . '</td>
             <td>' . $row["keterangan"] . '</td>
             </tr>';
-    }
+}
 
-    $html .= '</tbody>
+$html .= '</tbody>
 </table>
 </body>
 </html>';
-    $mpdf->WriteHTML($html);
-    $mpdf->Output('laporan-absensi.pdf', \Mpdf\Output\Destination::INLINE);
+$mpdf->WriteHTML($html);
+$mpdf->Output('laporan-absensi.pdf', \Mpdf\Output\Destination::INLINE);
