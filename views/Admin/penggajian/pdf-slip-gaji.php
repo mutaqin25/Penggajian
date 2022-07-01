@@ -232,6 +232,10 @@ $html = '<!DOCTYPE html>
             <td colspan="2">: Rp. ' . number_format($result_gaji["gaji_bersih"], 0, ",", ".") . '</td>
         </tr>
         <tr>
+            <td style="width: 200px">Total Hadir</td>
+            <td colspan="2">: ' . $result_gaji["total_hadir"] . '</td>
+        </tr>
+        <tr>
             <td colspan="7">
                 <hr>
             </td>

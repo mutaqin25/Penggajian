@@ -14,7 +14,6 @@ $cek = mysqli_num_rows($login);
 
 // cek apakah username dan password di temukan pada database
 if ($cek > 0) {
-
     $data = mysqli_fetch_assoc($login);
 
     // cek jika user login sebagai admin
@@ -42,8 +41,9 @@ if ($cek > 0) {
     } else {
 
         // alihkan ke halaman login kembali
-        header("../index.php?pesan=gagal");
+        header("location:../index.php?pesan=gagal");
     }
 } else {
-    header("../index.php?pesan=gagal");
+
+    header("location:../index.php?pesan=gagal");
 }

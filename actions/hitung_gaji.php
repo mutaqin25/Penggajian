@@ -36,6 +36,11 @@ if (isset($_POST['hitung'])) {
 
     if ($periode != $tanggal) {
 
+        // total hadir
+        $cek_hadir = mysqli_query($conn, "select sum(hadir) as hadir from penghasilan where nik = $nik and tanggal like '%$tanggal%'");
+        $result_hadir = mysqli_fetch_array($cek_hadir);
+        $total_hadir = $result_hadir['hadir'];
+
         // ---------------------------- pendapatan ---------------------------- //
         $cek_makan = mysqli_query($conn, "select sum(uang_makan) as uang_makan from penghasilan where nik = $nik and tanggal like '%$tanggal%'");
         $result_makan = mysqli_fetch_array($cek_makan);
@@ -184,7 +189,7 @@ if (isset($_POST['hitung'])) {
 
 
         // menginput data ke database
-        $sql = "INSERT INTO gaji_bulanan (id_gaji, periode, nik, tanggal, gaji_pokok, uang_tunjangan, uang_lembur, uang_potongan, bpjs, pph21, gaji_bersih) VALUE ('$id_gaji', '$tanggal', '$nik', '$tgl_now', '$gaji', '$tunjangan', '$uang_lembur', '$potongan', '$bpjs', '$pph21', '$gaji_bersih')";
+        $sql = "INSERT INTO gaji_bulanan (id_gaji, periode, nik, tanggal, gaji_pokok, total_hadir, uang_tunjangan, uang_lembur, uang_potongan, bpjs, pph21, gaji_bersih) VALUE ('$id_gaji', '$tanggal', '$nik', '$tgl_now', '$gaji', '$total_hadir', '$tunjangan', '$uang_lembur', '$potongan', '$bpjs', '$pph21', '$gaji_bersih')";
         echo '<br> ' . $sql;
         $query = mysqli_query($conn, $sql);
         echo mysqli_error($conn);

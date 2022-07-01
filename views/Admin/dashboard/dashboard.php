@@ -296,6 +296,18 @@
                 <a href="../user/form-user.php" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
+
+
+            <!-- ./col -->
+            <div class="col-lg-12 col-6" style="align-items:center ;">
+              <!-- small box -->
+              <div class="small-box " style="align-content:center ;">
+                <div class="inner" style="text-align:center ;">
+                  <img style="width:60% ;" src="../../../assets/images/logo/dinobites.png">
+                </div>
+              </div>
+            </div>
+
             <!-- ./col -->
           </div>
           <!-- /.row (main row) -->

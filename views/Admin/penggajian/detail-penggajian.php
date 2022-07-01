@@ -449,6 +449,7 @@
                                     <th>No</th>
                                     <th>Periode</th>
                                     <th>Gaji Pokok</th>
+                                    <th>Total Hadir</th>
                                     <th>Uang Tunjangan</th>
                                     <th>Uang Lembur</th>
                                     <th>Uang Potongan</th>
@@ -463,6 +464,7 @@
                                     <th>No</th>
                                     <th>Periode</th>
                                     <th>Gaji Pokok</th>
+                                    <th>Total Hadir</th>
                                     <th>Uang Tunjangan</th>
                                     <th>Uang Lembur</th>
                                     <th>Uang Potongan</th>
@@ -484,6 +486,7 @@
                                         <td><?php echo $no++ ?></td>
                                         <td><?php echo $d['periode'] ?></td>
                                         <td>Rp. <?php echo number_format($d['gaji_pokok'], 0, ",", ".") ?></td>
+                                        <td><?php echo $d['total_hadir'] ?></td>
                                         <td>Rp. <?php echo number_format($d['uang_tunjangan'], 0, ",", ".") ?></td>
                                         <td>Rp. <?php echo number_format($d['uang_lembur'], 0, ",", ".") ?></td>
                                         <td>Rp. <?php echo number_format($d['uang_potongan'], 0, ",", ".") ?></td>
