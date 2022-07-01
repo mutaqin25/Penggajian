@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 21, 2022 at 11:42 AM
+-- Generation Time: Jul 01, 2022 at 02:06 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.4.14
 
@@ -48,7 +48,11 @@ INSERT INTO `absen` (`id_absen`, `nik`, `tanggal`, `jam_masuk`, `ket_masuk`, `ja
 (6, 3333333333333, '2022-06-21', '13:25:33', 'Tepat Waktu', '13:25:37', 'Pulang Lebih Awal', 'Hadir'),
 (7, 20160910024, '2022-06-20', '00:00:00', '', '00:00:00', '', 'Sakit'),
 (8, 20160910024, '2022-06-21', '14:17:31', 'Terlambat', '14:18:29', 'Pulang Lebih Awal', 'Hadir'),
-(9, 99999999999, '2022-06-21', '16:14:00', 'Terlambat', '16:14:04', 'Pulang Lebih Awal', 'Hadir');
+(9, 99999999999, '2022-06-21', '16:14:00', 'Terlambat', '16:14:04', 'Pulang Lebih Awal', 'Hadir'),
+(10, 251098, '2022-06-23', '13:09:33', 'Terlambat', '13:09:46', 'Lembur', 'Hadir'),
+(11, 251098, '2022-06-24', '08:12:00', 'Tepat Waktu', '14:12:00', 'Lembur', 'Hadir'),
+(12, 20160910024, '2022-06-28', '22:13:14', 'Terlambat', '00:00:00', '', NULL),
+(13, 20160910024, '2022-07-01', '00:00:00', '', '00:00:00', '', 'Tidak Masuk');
 
 -- --------------------------------------------------------
 
@@ -62,6 +66,7 @@ CREATE TABLE `gaji_bulanan` (
   `nik` bigint(30) NOT NULL,
   `tanggal` date NOT NULL,
   `gaji_pokok` bigint(30) NOT NULL,
+  `total_hadir` int(15) NOT NULL,
   `uang_tunjangan` bigint(30) NOT NULL,
   `uang_lembur` bigint(30) NOT NULL,
   `uang_potongan` bigint(30) NOT NULL,
@@ -74,9 +79,9 @@ CREATE TABLE `gaji_bulanan` (
 -- Dumping data for table `gaji_bulanan`
 --
 
-INSERT INTO `gaji_bulanan` (`id_gaji`, `periode`, `nik`, `tanggal`, `gaji_pokok`, `uang_tunjangan`, `uang_lembur`, `uang_potongan`, `bpjs`, `pph21`, `gaji_bersih`) VALUES
-(3, '2022-06', 3333333333333, '2022-06-21', 8000000, 40000, 0, 0, 43200, 140202, 7942998),
-(4, '2022-06', 20160910024, '2022-06-21', 4000000, 120000, 138728, 225000, 181600, 0, 4215328);
+INSERT INTO `gaji_bulanan` (`id_gaji`, `periode`, `nik`, `tanggal`, `gaji_pokok`, `total_hadir`, `uang_tunjangan`, `uang_lembur`, `uang_potongan`, `bpjs`, `pph21`, `gaji_bersih`) VALUES
+(1, '2022-06', 20160910024, '2022-07-01', 4000000, 3, 120000, 138728, 355000, 181600, 0, 4085328),
+(2, '2022-07', 20160910024, '2022-07-01', 4000000, 0, 0, 0, 100000, 181600, 0, 4081600);
 
 -- --------------------------------------------------------
 
@@ -108,6 +113,7 @@ CREATE TABLE `karyawan` (
 --
 
 INSERT INTO `karyawan` (`nik`, `nama`, `jenis_kelamin`, `tgl_lahir`, `alamat`, `status`, `agama`, `no_hp`, `jabatan`, `shift`, `gaji`, `bpjs`, `tgl_masuk`, `pendidikan`, `foto`, `qrcode`) VALUES
+(251098, 'Taqin', 'Laki-Laki', '1998-10-25', 'Cirebon                                                                                             ', 'Belum Menikah', 'Islam', '081111111111', 'Leader Pelayan', 'Shift 1', 4000000, 'Jaminan Kecelakaan Kerja,Jaminan Pensiun,Jaminan Kesehatan,Jaminan Kecelakaan Kerja,Jaminan Pensiun,', '2022-06-01', 'Diploma', '279398082_teahub.io-iron-spider-wallpaper-856302.png', '251098.png'),
 (8634242467, 'Erik', 'Laki-Laki', '2018-05-10', 'adada                                                                                               ', 'Menikah', 'Islam', '0834535324', 'Pelayan', 'Shift 1', 4000000, '', '2022-04-21', 'Kejuruan', '1646752479_javascript_original_logo_icon_146455.png', '8634242467.png'),
 (20160910024, 'Muttaqin', 'Laki-Laki', '1998-10-25', 'Cirebon                                                                                             ', 'Belum Menikah', 'Islam', '084245224233', 'Staff Pelayan', 'Shift 1', 4000000, 'Jaminan Kecelakaan Kerja,Jaminan Kematian,Jaminan Kesehatan,Jaminan Kecelakaan Kerja,Jaminan Kematia', '2022-02-08', 'Sarjana', '1782092867_985969.jpg', '20160910024.png'),
 (99999999999, 'Andora', 'Laki-Laki', '2022-06-17', 'nnnnn                                            ', 'Belum Menikah', 'Islam', '084245224233', 'Pelayan', 'Shift 1', 5000000, 'Jaminan Kecelakaan Kerja,Jaminan Kematian,Jaminan Hari Tua,Jaminan Pensiun', '2022-06-01', 'Sekolah Menengah Atas', '1170555466_1653512.jpg', '99999999999.png'),
@@ -147,7 +153,11 @@ INSERT INTO `penghasilan` (`id_penghasilan`, `nik`, `id_absen`, `tanggal`, `hadi
 (6, 3333333333333, 6, '2022-06-21', 1, 0, 0, 0, 0, 20000, 20000, 0, 0, 0, 0),
 (7, 20160910024, 7, '2022-06-20', 0, 0, 1, 0, 0, 0, 0, 75000, 0, 0, 0),
 (8, 20160910024, 8, '2022-06-21', 1, 0, 0, 5, 0, 20000, 20000, 0, 0, 0, 50000),
-(9, 99999999999, 9, '2022-06-21', 1, 0, 0, 7, 0, 20000, 20000, 0, 0, 0, 70000);
+(9, 99999999999, 9, '2022-06-21', 1, 0, 0, 7, 0, 20000, 20000, 0, 0, 0, 70000),
+(10, 251098, 10, '2022-06-23', 1, 0, 0, 4, 3, 20000, 20000, 0, 0, 69364, 40000),
+(11, 251098, 11, '2022-06-24', 1, 0, 0, 0, 2, 20000, 20000, 0, 0, 46243, 0),
+(12, 20160910024, 12, '2022-06-28', 0, 0, 0, 13, 0, 0, 0, 0, 0, 0, 130000),
+(13, 20160910024, 13, '2022-07-01', 0, 1, 0, 0, 0, 0, 0, 0, 100000, 0, 0);
 
 -- --------------------------------------------------------
 
