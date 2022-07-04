@@ -2,10 +2,10 @@
 include '../../../config.php';
 require_once __DIR__ . '/../../../assets/vendor/autoload.php';
 
-$nik = $_POST['nik'];
-$bulan = $_POST['bulan'];
-$tahun = $_POST['tahun'];
-$tanggal = $tahun . '-' . $bulan;
+$nik = $_GET['id'];
+// $bulan = $_POST['bulan'];
+// $tahun = $_POST['tahun'];
+$tanggal = $_GET['periode'];
 
 $data_karyawan = mysqli_query($conn, "select * from karyawan where nik = $nik ");
 $result_karyawan = mysqli_fetch_array($data_karyawan);

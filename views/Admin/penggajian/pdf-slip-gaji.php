@@ -2,10 +2,10 @@
 include '../../../config.php';
 require_once __DIR__ . '/../../../assets/vendor/autoload.php';
 
-$nik = $_POST['nik'];
-$bulan = $_POST['bulan'];
-$tahun = $_POST['tahun'];
-$tanggal = $tahun . '-' . $bulan;
+$nik = $_GET['id'];
+$tanggal = $_GET['periode'];
+echo $tanggal;
+echo $nik;
 
 $data_karyawan = mysqli_query($conn, "select * from karyawan where nik = $nik ");
 $result_karyawan = mysqli_fetch_array($data_karyawan);
@@ -17,6 +17,8 @@ $result_gaji = mysqli_fetch_array($data_gaji);
 
 $mpdf = new \Mpdf\Mpdf();
 $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-P']);
+// $mpdf = new \Mpdf\Mpdf(['debug' => true]);
+// ob_start();
 
 // ---------------------------- pendapatan ---------------------------- //
 $cek_makan = mysqli_query($conn, "select sum(uang_makan) as uang_makan from penghasilan where nik = $nik and tanggal like '%$tanggal%'");
@@ -283,4 +285,4 @@ $html = '<!DOCTYPE html>
 
 </html>';
 $mpdf->WriteHTML($html);
-$mpdf->Output('Laporan Gaji.pdf', \Mpdf\Output\Destination::INLINE);
+$mpdf->Output('Laporan Gaji.pdf', 'D');

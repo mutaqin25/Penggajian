@@ -265,7 +265,7 @@
 
                 </div>
             </div>
-            <form action="pdf-slip-gaji.php" method="POST">
+            <!-- <form action="pdf-slip-gaji.php" method="POST">
                 <div class="card-body">
                     <div class="form-group row">
                         <?php
@@ -306,8 +306,8 @@
                         <button class="btn btn-primary" role="button" target="_blank">Slip Gaji &nbsp; <i class="fa-solid fa-print"></i> </button>
                     </div>
                 </div>
-            </form>
-            <hr style="height:1px; background-color:grey ;">
+            </form> -->
+            <!-- <hr style="height:1px; background-color:grey ;"> -->
 
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -388,7 +388,7 @@
                                     <th>BPJS</th>
                                     <th>PPH</th>
                                     <th>Gaji Bersih</th>
-
+                                    <th>Ket</th>
                                 </tr>
                             </thead>
                             <tfoot>
@@ -403,6 +403,7 @@
                                     <th>BPJS</th>
                                     <th>PPH</th>
                                     <th>Gaji Bersih</th>
+                                    <th>Ket</th>
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -424,7 +425,7 @@
                                         <td>Rp. <?php echo number_format($d['bpjs'], 0, ",", ".") ?></td>
                                         <td>Rp. <?php echo number_format($d['pph21'], 0, ",", ".") ?></td>
                                         <td>Rp. <?php echo number_format($d['gaji_bersih'], 0, ",", ".") ?></td>
-
+                                        <td> <a class="btn btn-primary" href="pdf-slip-gaji.php?periode=<?php echo $d['periode']; ?>&id=<?php echo $d['nik']; ?>" data-toggle="tooltip" title="Delete" role="button"><i class="fa-solid fa-print"></i></a></td>
                                     </tr>
                                 <?php
                                 }

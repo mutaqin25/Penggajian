@@ -394,7 +394,7 @@
                     </div>
                 </div>
             </div>
-            <form action="pdf-slip-gaji.php" method="POST">
+            <!-- <form action="pdf-slip-gaji.php" method="POST">
                 <div class="card-body">
                     <div class="form-group row">
                         <?php
@@ -435,7 +435,7 @@
                         <button class="btn btn-primary" role="button" target="_blank">Slip Gaji &nbsp; <i class="fa-solid fa-print"></i> </button>
                     </div>
                 </div>
-            </form>
+            </form> -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Data Penggajian Perbulan</h6>
@@ -494,7 +494,8 @@
                                         <td>Rp. <?php echo number_format($d['pph21'], 0, ",", ".") ?></td>
                                         <td>Rp. <?php echo number_format($d['gaji_bersih'], 0, ",", ".") ?></td>
                                         <td>
-                                            <a class="btn btn-danger" href="../../../actions/delete-gaji.php?id=<?php echo $d['id_gaji']; ?>" data-toggle="tooltip" title="Delete" role="button"><i class="fa-solid fa-trash-can"></i></a>
+                                            <a class="btn btn-danger" href="../../../actions/delete-gaji.php?id=<?php echo $d['id_gaji']; ?>" data-toggle="tooltip" title="Delete" role="button"><i class="fa-solid fa-trash-can"></i></a> &nbsp;
+                                            <a class="btn btn-primary" href="pdf-slip-gaji.php?periode=<?php echo $d['periode']; ?>&id=<?php echo $d['nik']; ?>" data-toggle="tooltip" title="Delete" role="button"><i class="fa-solid fa-print"></i></a>
 
                                         </td>
 
