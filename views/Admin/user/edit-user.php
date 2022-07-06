@@ -287,7 +287,7 @@
                                             <label for="" class="col-sm-2 col-form-label"></label>
                                             <div class="col-sm-10">
                                                 <button type="submit" value="simpan" name="simpan" class="btn btn-primary" style="width: 24%;">Simpan</button>
-                                                <a class="btn btn-success" href="form-pelanggan.php" role="button" style="width: 24%;">Kembali</a>
+                                                <a class="btn btn-success" href="form-user.php" role="button" style="width: 24%;">Kembali</a>
                                             </div>
                                         </div>
                                     </div>
