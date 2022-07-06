@@ -227,7 +227,7 @@
                 <?php
                             } elseif ($_SESSION['status'] == "gagal") {
                 ?>
-                    <div class="alert alert-success" role="alert" id="alert-warning">
+                    <div class="alert alert-danger" role="alert" id="alert-warning">
                         <span id="message-warning"></span>
                     </div>
                 <?php
@@ -288,7 +288,7 @@
                                         <td><?php echo $d['level'] ?></td>
                                         <td>
                                             <a class="btn btn-success" href="edit-user.php?id=<?php echo $d['id_user']; ?>" data-toggle="tooltip" title="Edit" role="button"><i class="fa-solid fa-pen-to-square"></i></a>
-                                            <a class="btn btn-danger" href="../../../actions/delete-user.php?id=<?php echo $d['nik']; ?>" data-toggle="tooltip" title="Delete" role="button"><i class="fa-solid fa-trash-can"></i></a>
+                                            <a class="btn btn-danger" href="../../../actions/delete-user.php?id=<?php echo $d['id_user']; ?>" data-toggle="tooltip" title="Delete" role="button"><i class="fa-solid fa-trash-can"></i></a>
                                         </td>
                                     </tr>
                                 <?php
@@ -423,33 +423,34 @@
 
     <!-- alert fade Out-->
     <?php
-
-    if (isset($_SESSION['status']) == "sukses") {
+    if (isset($_SESSION['status'])) {
+        if ($_SESSION['status'] == "sukses") {
     ?>
-        <script>
-            document.getElementById('message-success').innerHTML = "<?= $_SESSION['message']; ?>";
-            window.setTimeout(function() {
-                $("#alert-success").fadeTo(500, 0).slideUp(500, function() {
-                    $(this).remove();
-                });
-            }, 3000);
-        </script>
+            <script>
+                document.getElementById('message-success').innerHTML = "<?= $_SESSION['message']; ?>";
+                window.setTimeout(function() {
+                    $("#alert-success").fadeTo(500, 0).slideUp(500, function() {
+                        $(this).remove();
+                    });
+                }, 3000);
+            </script>
+        <?php
+            unset($_SESSION['status']);
+            unset($_SESSION['message']);
+        } elseif ($_SESSION['status'] == "gagal") {
+        ?>
+            <script>
+                document.getElementById('message-warning').innerHTML = "<?= $_SESSION['message']; ?>";
+                window.setTimeout(function() {
+                    $("#alert-warning").fadeTo(500, 0).slideUp(500, function() {
+                        $(this).remove();
+                    });
+                }, 3000);
+            </script>
     <?php
-        unset($_SESSION['status']);
-        unset($_SESSION['message']);
-    } elseif (isset($_SESSION['status']) == "gagal") {
-    ?>
-        <script>
-            document.getElementById('message-warning').innerHTML = "<?= $_SESSION['message']; ?>";
-            window.setTimeout(function() {
-                $("#alert-warning").fadeTo(500, 0).slideUp(500, function() {
-                    $(this).remove();
-                });
-            }, 3000);
-        </script>
-    <?php
-        unset($_SESSION['status']);
-        unset($_SESSION['message']);
+            unset($_SESSION['status']);
+            unset($_SESSION['message']);
+        }
     }
     ?>
 

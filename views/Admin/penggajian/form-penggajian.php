@@ -235,49 +235,12 @@
                 ?>
                 </p>
             <?php endif; ?>
-            <!-- <a class="btn btn-primary" href="tambah-karyawan.php" role="button">Tambah Data &nbsp; <i class="fa-solid fa-plus"></i></a>
-            <button class="btn btn-primary" href="tambah-karyawan.php" role="button" data-toggle="modal" data-target="#importFile">Import</button> -->
 
             </p>
 
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div>
-                    <!-- <form action="" method="GET">
-                        <div class="card-body">
-                            <div class="form-group row">
-                                <label for="" class="col-sm-1 col-form-label">Bulan</label>
-                                <div class="col-sm-3">
-                                    <select name='bulan' id='bulan' class='form-control'>
-                                        <option value='01'>Januari</option>
-                                        <option value='02'>Februari</option>
-                                        <option value='03'>Maret</option>
-                                        <option value='04'>April</option>
-                                        <option value='05'>Mei</option>
-                                        <option value='06'>Juni</option>
-                                        <option value='07'>Juli</option>
-                                        <option value='08'>Agustus</option>
-                                        <option value='09'>September</option>
-                                        <option value='10'>Oktober</option>
-                                        <option value='11'>November</option>
-                                        <option value='12'>Desember</option>
-                                    </select>
-                                </div>
-                                <label for="" class="col-sm-1 col-form-label">Tahun</label>
-                                <div class="col-sm-3">
-                                    <select name='tahun' class='form-control'>
-                                        <option selected=”selected”>Tahun</option>
-                                        <?php
-                                        for ($i = date('Y'); $i >= date('Y') - 32; $i -= 1) {
-                                            echo "<option value='$i'> $i </option>";
-                                        }
-                                        ?>
-                                    </select>
-                                </div>
-                                <button type="submit" class="btn btn-primary" name="submit" value="simpan">Cari</button>
-                            </div>
-                        </div>
-                    </form> -->
                 </div>
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Data Penggajian</h6>
@@ -454,33 +417,35 @@
 
     <!-- alert fade Out-->
     <?php
+    if (isset($_SESSION['status'])) {
 
-    if (isset($_SESSION['status']) == "sukses") {
+        if ($_SESSION['status'] == "sukses") {
     ?>
-        <script>
-            document.getElementById('message-success').innerHTML = "<?= $_SESSION['message']; ?>";
-            window.setTimeout(function() {
-                $("#alert-success").fadeTo(500, 0).slideUp(500, function() {
-                    $(this).remove();
-                });
-            }, 3000);
-        </script>
+            <script>
+                document.getElementById('message-success').innerHTML = "<?= $_SESSION['message']; ?>";
+                window.setTimeout(function() {
+                    $("#alert-success").fadeTo(500, 0).slideUp(500, function() {
+                        $(this).remove();
+                    });
+                }, 3000);
+            </script>
+        <?php
+            unset($_SESSION['status']);
+            unset($_SESSION['message']);
+        } elseif ($_SESSION['status'] == "gagal") {
+        ?>
+            <script>
+                document.getElementById('message-warning').innerHTML = "<?= $_SESSION['message']; ?>";
+                window.setTimeout(function() {
+                    $("#alert-warning").fadeTo(500, 0).slideUp(500, function() {
+                        $(this).remove();
+                    });
+                }, 3000);
+            </script>
     <?php
-        unset($_SESSION['status']);
-        unset($_SESSION['message']);
-    } elseif (isset($_SESSION['status']) == "gagal") {
-    ?>
-        <script>
-            document.getElementById('message-warning').innerHTML = "<?= $_SESSION['message']; ?>";
-            window.setTimeout(function() {
-                $("#alert-warning").fadeTo(500, 0).slideUp(500, function() {
-                    $(this).remove();
-                });
-            }, 3000);
-        </script>
-    <?php
-        unset($_SESSION['status']);
-        unset($_SESSION['message']);
+            unset($_SESSION['status']);
+            unset($_SESSION['message']);
+        }
     }
     ?>
 

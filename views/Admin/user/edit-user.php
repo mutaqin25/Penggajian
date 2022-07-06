@@ -287,7 +287,7 @@
                                             <label for="" class="col-sm-2 col-form-label"></label>
                                             <div class="col-sm-10">
                                                 <button type="submit" value="simpan" name="simpan" class="btn btn-primary" style="width: 24%;">Simpan</button>
-                                                <a class="btn btn-success" href="form-pelanggan.php" role="button" style="width: 24%;">Kembali</a>
+                                                <a class="btn btn-success" href="form-user.php" role="button" style="width: 24%;">Kembali</a>
                                             </div>
                                         </div>
                                     </div>
@@ -422,33 +422,34 @@
 
     <!-- alert fade Out-->
     <?php
-
-    if (isset($_SESSION['status']) == "sukses") {
+    if (isset($_SESSION['status'])) {
+        if ($_SESSION['status'] == "sukses") {
     ?>
-        <script>
-            document.getElementById('message-success').innerHTML = "<?= $_SESSION['message']; ?>";
-            window.setTimeout(function() {
-                $("#alert-success").fadeTo(500, 0).slideUp(500, function() {
-                    $(this).remove();
-                });
-            }, 3000);
-        </script>
+            <script>
+                document.getElementById('message-success').innerHTML = "<?= $_SESSION['message']; ?>";
+                window.setTimeout(function() {
+                    $("#alert-success").fadeTo(500, 0).slideUp(500, function() {
+                        $(this).remove();
+                    });
+                }, 3000);
+            </script>
+        <?php
+            unset($_SESSION['status']);
+            unset($_SESSION['message']);
+        } elseif ($_SESSION['status'] == "gagal") {
+        ?>
+            <script>
+                document.getElementById('message-warning').innerHTML = "<?= $_SESSION['message']; ?>";
+                window.setTimeout(function() {
+                    $("#alert-warning").fadeTo(500, 0).slideUp(500, function() {
+                        $(this).remove();
+                    });
+                }, 3000);
+            </script>
     <?php
-        unset($_SESSION['status']);
-        unset($_SESSION['message']);
-    } elseif (isset($_SESSION['status']) == "gagal") {
-    ?>
-        <script>
-            document.getElementById('message-warning').innerHTML = "<?= $_SESSION['message']; ?>";
-            window.setTimeout(function() {
-                $("#alert-warning").fadeTo(500, 0).slideUp(500, function() {
-                    $(this).remove();
-                });
-            }, 3000);
-        </script>
-    <?php
-        unset($_SESSION['status']);
-        unset($_SESSION['message']);
+            unset($_SESSION['status']);
+            unset($_SESSION['message']);
+        }
     }
     ?>
 
