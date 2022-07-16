@@ -267,7 +267,7 @@
                                     <th>Pendidikan</th>
                                     <th>Foto</th>
                                     <th>QR Code</th>
-                                    <th>ket</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tfoot>
@@ -289,7 +289,7 @@
                                     <th>Pendidikan</th>
                                     <th>Foto</th>
                                     <th>QR Code</th>
-                                    <th>ket</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </tfoot>
                             <tbody>

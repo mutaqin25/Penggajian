@@ -255,7 +255,7 @@
                                     <th>Username</th>
                                     <th>Password</th>
                                     <th>Level</th>
-                                    <th>ket</th>
+                                    <th>Aksi</th>
 
                                 </tr>
                             </thead>
@@ -268,7 +268,7 @@
                                     <th>Username</th>
                                     <th>Password</th>
                                     <th>Level</th>
-                                    <th>ket</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </tfoot>
                             <tbody>

@@ -11,8 +11,8 @@
                 <th>Ket Masuk</th>
                 <th>Jam Keluar</th>
                 <th>Ket Keluar</th>
-                <th>Keteranan</th>
-                <th>ket</th>
+                <th>Keterangan</th>
+                <th>Aksi</th>
 
             </tr>
         </thead>
@@ -25,8 +25,8 @@
                 <th>Ket Masuk</th>
                 <th>Jam Keluar</th>
                 <th>Ket Keluar</th>
-                <th>Keteranan</th>
-                <th>ket</th>
+                <th>Keterangan</th>
+                <th>Aksi</th>
             </tr>
         </tfoot>
         <tbody>

@@ -254,7 +254,7 @@
                                     <th>Nik</th>
                                     <th>Nama</th>
                                     <th>Jabatan</th>
-                                    <th>ket</th>
+                                    <th>Aksi</th>
 
                                 </tr>
                             </thead>
@@ -264,7 +264,7 @@
                                     <th>Nik</th>
                                     <th>Nama</th>
                                     <th>Jabatan</th>
-                                    <th>ket</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </tfoot>
                             <tbody>

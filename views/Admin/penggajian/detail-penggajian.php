@@ -456,7 +456,7 @@
                                     <th>BPJS</th>
                                     <th>PPH</th>
                                     <th>Gaji Bersih</th>
-                                    <th>Ket</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </thead>
                             <tfoot>
@@ -471,7 +471,7 @@
                                     <th>BPJS</th>
                                     <th>PPH</th>
                                     <th>Gaji Bersih</th>
-                                    <th>Ket</th>
+                                    <th>Aksi</th>
                                 </tr>
                             </tfoot>
                             <tbody>
