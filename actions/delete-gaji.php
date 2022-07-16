@@ -1,9 +1,9 @@
 <?php
 include '../config.php';
 
-if (isset($_GET['id]']) == "") {
+if (isset($_POST['id]']) == "") {
 
-    $id = $_GET['id'];
+    $id = $_POST['id'];
 
     $sql = "DELETE FROM gaji_bulanan WHERE id_gaji=$id";
     $query = mysqli_query($conn, $sql);
@@ -18,5 +18,5 @@ if (isset($_GET['id]']) == "") {
         header('Location: ../views/Admin/penggajian/form-penggajian.php');
     }
 } else {
-    echo $_GET['id'];
+    echo $_POST['id'];
 }

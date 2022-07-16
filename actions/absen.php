@@ -51,7 +51,7 @@
                         <td><?php echo $d['keterangan'] ?></td>
                         <td>
                             <a class="btn btn-success" href="edit-absensi.php?id=<?php echo $d['id_absen']; ?>" data-toggle="tooltip" title="Edit" role="button"><i class="fa-solid fa-pen-to-square"></i></a>
-                            <a class="btn btn-danger" href="../../../actions/delete-absensi.php?id=<?php echo $d['id_absen']; ?>" data-toggle="tooltip" title="Delete" role="button"><i class="fa-solid fa-trash-can"></i></a>
+                            <a class="btn btn-danger alert_notif" href="../../../actions/delete-absensi.php?id=<?php echo $d['id_absen']; ?>" data-toggle="tooltip" title="Delete" role="button"><i class="fa-solid fa-trash-can"></i></a>
                         </td>
                     </tr>
                 <?php
@@ -74,7 +74,8 @@
                         <td><?php echo $d['keterangan'] ?></td>
                         <td>
                             <a class="btn btn-success" href="edit-absensi.php?id=<?php echo $d['id_absen']; ?>" data-toggle="tooltip" title="Edit" role="button"><i class="fa-solid fa-pen-to-square"></i></a>
-                            <a class="btn btn-danger" href="../../../actions/delete-absensi.php?id=<?php echo $d['id_absen']; ?>" data-toggle="tooltip" title="Delete" role="button"><i class="fa-solid fa-trash-can"></i></a>
+                            <!-- <a class="btn btn-danger alert_notif" href="../../../actions/delete-absensi.php?id=<?php echo $d['id_absen']; ?>" data-toggle="tooltip" title="Delete" role="button"><i class="fa-solid fa-trash-can"></i></a> -->
+                            <button type="delete" name="delete" value="<?php echo $d['id_absen']; ?>" id="<?php echo $d['id_absen']; ?>" type="submit" class="btn btn-danger" onclick="archiveFunction(this.id)"><i class="fa-solid fa-trash-can"></i></button>
                         </td>
                     </tr>
             <?php
@@ -84,3 +85,36 @@
         </tbody>
     </table>
 </div>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="../../../assets/Registration/js/sweetalert.min.js"></script>
+
+<script>
+    function archiveFunction(id) {
+        event.preventDefault(); // prevent form submit
+        var form = event.target.form; // storing the form
+        swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this imaginary file!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((isConfirm) => {
+                if (isConfirm) {
+                    console.log(id);
+                    $.ajax({
+                        url: '../../../actions/delete-absensi.php',
+                        type: 'POST',
+                        data: 'id=' + id,
+                        success: function(data) {
+                            $('.data').load("../../../actions/absen.php");
+                        }
+                    });
+                    swal("Updated!", "Your imaginary file has been Deleted.", "success");
+
+                } else {
+                    swal("Cancelled", "Your file is safe :)", "error");
+                }
+            });
+    }
+</script>

@@ -320,7 +320,8 @@
                                         <td>
                                             <a class="btn btn-primary" role="button" target="_blank" href="pdf-id-card.php?nik=<?php echo $d['nik'] ?>"><i class="fa-solid fa-id-card-clip"></i></a> &nbsp;
                                             <a class="btn btn-success" href="edit-karyawan.php?id=<?php echo $d['nik']; ?>" data-toggle="tooltip" title="Edit" role="button"><i class="fa-solid fa-pen-to-square"></i></a> &nbsp;
-                                            <a class="btn btn-danger" href="../../../actions/delete-karyawan.php?id=<?php echo $d['nik']; ?>" data-toggle="tooltip" title="Delete" role="button"><i class="fa-solid fa-trash-can"></i></a>
+                                            <!-- <a class="btn btn-danger alert_notif" href="../../../actions/delete-karyawan.php?id=<?php echo $d['nik']; ?>" data-toggle="tooltip" title="Delete" role="button"><i class="fa-solid fa-trash-can"></i></a> -->
+                                            <button type="delete" name="delete" value="<?php echo $d['nik']; ?>" id="<?php echo $d['nik']; ?>" type="submit" class="btn btn-danger" onclick="archiveFunction(this.id)"><i class="fa-solid fa-trash-can"></i></button>
                                         </td>
                                     </tr>
                                 <?php
@@ -565,6 +566,37 @@
     <script src="../../../assets/Admin/dist/js/demo.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="../../../assets/Admin/dist/js/pages/dashboard.js"></script>
+    <script src="../../../assets/Registration/js/sweetalert.min.js"></script>
+
+    <script>
+        function archiveFunction(id) {
+            event.preventDefault(); // prevent form submit
+            var form = event.target.form; // storing the form
+            swal({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover this imaginary file!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((isConfirm) => {
+                    if (isConfirm) {
+                        console.log(id);
+                        $.ajax({
+                            url: '../../../actions/delete-karyawan.php',
+                            type: 'POST',
+                            data: 'id=' + id,
+                            success: function(data) {}
+                        });
+                        location.reload(true);
+                        // swal("Updated!", "Your imaginary file has been Deleted.", "success");
+
+                    } else {
+                        swal("Cancelled", "Your file is safe :)", "error");
+                    }
+                });
+        }
+    </script>
 </body>
 
 </html>

@@ -31,6 +31,8 @@
     <!-- Font Awasome -->
     <link href="../../../assets/fontawesome/css/all.css" rel="stylesheet">
     <!-- end font awaseome -->
+    <!-- modal delete -->
+    <link rel="stylesheet" href="../../../assets/Admin/dist/css/delete-confirm.css?v=1.0">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -284,62 +286,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Data Absensi</h6>
                 </div>
                 <div class="card-body data">
-                    <!-- <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" align="center">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Nik</th>
-                                    <th>Tanggal</th>
-                                    <th>Jam Masuk</th>
-                                    <th>Ket Masuk</th>
-                                    <th>Jam Keluar</th>
-                                    <th>Ket Keluar</th>
-                                    <th>Keteranan</th>
-                                    <th>ket</th>
 
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Nik</th>
-                                    <th>Tanggal</th>
-                                    <th>Jam Masuk</th>
-                                    <th>Ket Masuk</th>
-                                    <th>Jam Keluar</th>
-                                    <th>Ket Keluar</th>
-                                    <th>Keteranan</th>
-                                    <th>ket</th>
-                                </tr>
-                            </tfoot>
-                            <tbody>
-                                <?php
-
-                                $no = 1;
-                                $data = mysqli_query($conn, "select * from absen ");
-                                while ($d = mysqli_fetch_array($data)) {
-                                ?>
-                                    <tr>
-                                        <td><?php echo $no++ ?></td>
-                                        <td><?php echo $d['nik'] ?></td>
-                                        <td><?php echo $d['tanggal'] ?></td>
-                                        <td><?php echo $d['jam_masuk'] ?></td>
-                                        <td><?php echo $d['ket_masuk'] ?></td>
-                                        <td><?php echo $d['jam_keluar'] ?></td>
-                                        <td><?php echo $d['ket_keluar'] ?></td>
-                                        <td><?php echo $d['keterangan'] ?></td>
-                                        <td>
-                                            <a class="btn btn-success" href="edit-absensi.php?id=<?php echo $d['id_absen']; ?>" data-toggle="tooltip" title="Edit" role="button"><i class="fa-solid fa-pen-to-square"></i></a>
-                                            <a class="btn btn-danger" href="../../../actions/delete-absensi.php?id=<?php echo $d['id_absen']; ?>" data-toggle="tooltip" title="Delete" role="button"><i class="fa-solid fa-trash-can"></i></a>
-                                        </td>
-                                    </tr>
-                                <?php
-                                }
-                                ?>
-                            </tbody>
-                        </table>
-                    </div> -->
                 </div>
             </div>
 
@@ -436,9 +383,10 @@
         </div>
     </div>
 
-    <!-- Import Modal -->
+    <!-- delete Modal -->
+
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class=" modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -460,13 +408,53 @@
         </div>
     </div>
 
+
+
+
+    <!-- jQuery -->
+    <!-- <script src="../../../assets/Admin/plugins/jquery/jquery.js"></script> -->
+    <script src="../../../assets/Admin/plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="../../../assets/Admin/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+        $.widget.bridge('uibutton', $.ui.button)
+    </script>
+    <!-- Bootstrap 4 -->
+    <script src="../../../assets/Admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- ChartJS -->
+    <script src="../../../assets/Admin/plugins/chart.js/Chart.min.js"></script>
+    <!-- Sparkline -->
+    <script src="../../../assets/Admin/plugins/sparklines/sparkline.js"></script>
+    <!-- JQVMap -->
+    <script src="../../../assets/Admin/plugins/jqvmap/jquery.vmap.min.js"></script>
+    <script src="../../../assets/Admin/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+    <!-- jQuery Knob Chart -->
+    <script src="../../../assets/Admin/plugins/jquery-knob/jquery.knob.min.js"></script>
+    <!-- daterangepicker -->
+    <script src="../../../assets/Admin/plugins/moment/moment.min.js"></script>
+    <script src="../../../assets/Admin/plugins/daterangepicker/daterangepicker.js"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="../../../assets/Admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <!-- Summernote -->
+    <script src="../../../assets/Admin/plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- overlayScrollbars -->
+    <script src="../../../assets/Admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../../../assets/Admin/dist/js/adminlte.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="../../../assets/Admin/dist/js/demo.js"></script>
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="../../../assets/Admin/dist/js/pages/dashboard.js"></script>
+    <script src="../../../assets/Registration/js/sweetalert.min.js"></script>
+
+
     <script>
         $(function() {
             $('[data-toggle="tooltip"]').tooltip()
         });
 
         $(document).ready(function() {
-            console.log('aaa');
             $('.data').load("../../../actions/absen.php");
             $(".search").click(function() {
                 console.log('bbb');
@@ -521,41 +509,6 @@
     ?>
 
 
-    <!-- jQuery -->
-    <!-- <script src="../../../assets/Admin/plugins/jquery/jquery.js"></script> -->
-    <script src="../../../assets/Admin/plugins/jquery/jquery.min.js"></script>
-    <!-- jQuery UI 1.11.4 -->
-    <script src="../../../assets/Admin/plugins/jquery-ui/jquery-ui.min.js"></script>
-    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-    <script>
-        $.widget.bridge('uibutton', $.ui.button)
-    </script>
-    <!-- Bootstrap 4 -->
-    <script src="../../../assets/Admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- ChartJS -->
-    <script src="../../../assets/Admin/plugins/chart.js/Chart.min.js"></script>
-    <!-- Sparkline -->
-    <script src="../../../assets/Admin/plugins/sparklines/sparkline.js"></script>
-    <!-- JQVMap -->
-    <script src="../../../assets/Admin/plugins/jqvmap/jquery.vmap.min.js"></script>
-    <script src="../../../assets/Admin/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-    <!-- jQuery Knob Chart -->
-    <script src="../../../assets/Admin/plugins/jquery-knob/jquery.knob.min.js"></script>
-    <!-- daterangepicker -->
-    <script src="../../../assets/Admin/plugins/moment/moment.min.js"></script>
-    <script src="../../../assets/Admin/plugins/daterangepicker/daterangepicker.js"></script>
-    <!-- Tempusdominus Bootstrap 4 -->
-    <script src="../../../assets/Admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-    <!-- Summernote -->
-    <script src="../../../assets/Admin/plugins/summernote/summernote-bs4.min.js"></script>
-    <!-- overlayScrollbars -->
-    <script src="../../../assets/Admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../../../assets/Admin/dist/js/adminlte.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="../../../assets/Admin/dist/js/demo.js"></script>
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="../../../assets/Admin/dist/js/pages/dashboard.js"></script>
 </body>
 
 </html>

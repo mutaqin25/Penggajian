@@ -288,7 +288,8 @@
                                         <td><?php echo $d['level'] ?></td>
                                         <td>
                                             <a class="btn btn-success" href="edit-user.php?id=<?php echo $d['id_user']; ?>" data-toggle="tooltip" title="Edit" role="button"><i class="fa-solid fa-pen-to-square"></i></a>
-                                            <a class="btn btn-danger" href="../../../actions/delete-user.php?id=<?php echo $d['id_user']; ?>" data-toggle="tooltip" title="Delete" role="button"><i class="fa-solid fa-trash-can"></i></a>
+                                            <!-- <a class="btn btn-danger" href="../../../actions/delete-user.php?id=<?php echo $d['id_user']; ?>" data-toggle="tooltip" title="Delete" role="button"><i class="fa-solid fa-trash-can"></i></a> -->
+                                            <button type="delete" name="delete" value="<?php echo $d['id_user']; ?>" id="<?php echo $d['id_user']; ?>" type="submit" class="btn btn-danger" onclick="archiveFunction(this.id)"><i class="fa-solid fa-trash-can"></i></button>
                                         </td>
                                     </tr>
                                 <?php
@@ -488,6 +489,37 @@
     <script src="../../../assets/Admin/dist/js/demo.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="../../../assets/Admin/dist/js/pages/dashboard.js"></script>
+    <script src="../../../assets/Registration/js/sweetalert.min.js"></script>
+
+    <script>
+        function archiveFunction(id) {
+            event.preventDefault(); // prevent form submit
+            var form = event.target.form; // storing the form
+            swal({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover this imaginary file!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((isConfirm) => {
+                    if (isConfirm) {
+                        console.log(id);
+                        $.ajax({
+                            url: '../../../actions/delete-user.php',
+                            type: 'POST',
+                            data: 'id=' + id,
+                            success: function(data) {}
+                        });
+                        // swal("Updated!", "Your imaginary file has been Deleted.", "success");
+                        location.reload(true);
+
+                    } else {
+                        swal("Cancelled", "Your file is safe :)", "error");
+                    }
+                });
+        }
+    </script>
 </body>
 
 </html>

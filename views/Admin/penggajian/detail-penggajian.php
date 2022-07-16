@@ -494,7 +494,9 @@
                                         <td>Rp. <?php echo number_format($d['pph21'], 0, ",", ".") ?></td>
                                         <td>Rp. <?php echo number_format($d['gaji_bersih'], 0, ",", ".") ?></td>
                                         <td>
-                                            <a class="btn btn-danger" href="../../../actions/delete-gaji.php?id=<?php echo $d['id_gaji']; ?>" data-toggle="tooltip" title="Delete" role="button"><i class="fa-solid fa-trash-can"></i></a> &nbsp;
+                                            <!-- <a class="btn btn-danger" href="../../../actions/delete-gaji.php?id=<?php echo $d['id_gaji']; ?>" data-toggle="tooltip" title="Delete" role="button"><i class="fa-solid fa-trash-can"></i></a> -->
+                                            <button type="delete" name="delete" value="<?php echo $d['id_gaji']; ?>" id="<?php echo $d['id_gaji']; ?>" type="submit" class="btn btn-danger" onclick="archiveFunction(this.id)"><i class="fa-solid fa-trash-can"></i></button>
+                                            &nbsp;
                                             <a class="btn btn-primary" href="pdf-slip-gaji.php?periode=<?php echo $d['periode']; ?>&id=<?php echo $d['nik']; ?>" data-toggle="tooltip" title="Delete" role="button"><i class="fa-solid fa-print"></i></a>
 
                                         </td>
@@ -714,6 +716,37 @@
     <script src="../../../assets/Admin/dist/js/demo.js"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="../../../assets/Admin/dist/js/pages/dashboard.js"></script>
+    <script src="../../../assets/Registration/js/sweetalert.min.js"></script>
+
+    <script>
+        function archiveFunction(id) {
+            event.preventDefault(); // prevent form submit
+            var form = event.target.form; // storing the form
+            swal({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover this imaginary file!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((isConfirm) => {
+                    if (isConfirm) {
+                        console.log(id);
+                        $.ajax({
+                            url: '../../../actions/delete-gaji.php',
+                            type: 'POST',
+                            data: 'id=' + id,
+                            success: function(data) {}
+                        });
+                        location.reload(true);
+                        // swal("Updated!", "Your imaginary file has been Deleted.", "success");
+
+                    } else {
+                        swal("Cancelled", "Your file is safe :)", "error");
+                    }
+                });
+        }
+    </script>
 </body>
 
 </html>

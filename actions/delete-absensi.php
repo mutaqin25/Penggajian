@@ -1,10 +1,10 @@
 <?php
 include '../config.php';
 
-if (isset($_GET['id]']) == "") {
+if (isset($_POST['id']) != "") {
 
-    $id = $_GET['id'];
-    $id_psl = $_GET['id_psl'];
+    $id = $_POST['id'];
+    // $id_psl = $_GET['id_psl'];
 
 
 

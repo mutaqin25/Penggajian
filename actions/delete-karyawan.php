@@ -1,9 +1,9 @@
 <?php
 include '../config.php';
 
-if (isset($_GET['id]']) == "") {
+if (isset($$_POST['delete']) == "") {
 
-    $id = $_GET['id'];
+    $id = $_POST['id'];
 
     // ambil data foto
     $cek_data = mysqli_query($conn, "SELECT foto AS file FROM karyawan WHERE nik=$id");
